@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>MyEV</title>
+      <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body>
+    <nav id='nav'>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="type.html">Charging Type Options</a></li>
+          <li><a href="myEV.html">MyEV</a></li>
+    </nav>
+
+    <div id="userNameDisplay">
+         <div id="icons"> </div>
+         <div id="icons2"> </div>
+         <div id="icons3"> </div>
+         <p id='username'> </p>
+    </div>
+
+    <form id="personinfo">
+
+      <fieldset>
+      <legend>
+        <span class="form-legend">1</span> Tell us about yourself
+      </legend>
+
+      <br>
+
+        <label for="">First Name and Last Name</label>
+        <input type="text" name="fullName" value="" /> <br>
+
+      <label for="">E-mail</label>
+      <input type="email" name="email" value="">
+
+      <legend> <span class="form-legend">2</span> Your favorite electric car</legend>
+
+      <label for="">Tesla</label>
+      <input type="checkbox" id='tesla' name="name" value="tesla"> <br>
+
+      <label for="">Nissan Leaf</label>
+      <input type="checkbox" id='leaf'  name="name" value="leaf"> <br>
+
+      <label for="">BMW i3</label>
+      <input type="checkbox" id='bmw' name="name" value="bmw"> <br>
+
+      <label for="">Where did you hear about us?</label>
+
+      <select class=" " name="">
+        <optgroup label='Search Engine'>Search Engine</optgroup>
+        <option value='Google'>Google</option>
+        <option value='Bing'>Bing</option>
+        <option value='Facebook'>Facebook</option>
+        <option value='Twitter'>Twitter</option>
+      </select>
+
+      <input type="submit" value="Sign up!">
+
+      </fieldset>
+    </form>
+
+<script src="app.js">
+
+</script>
+  </body>
+</html>
