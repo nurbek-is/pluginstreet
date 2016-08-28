@@ -1,5 +1,5 @@
 
-// Deifne function to create user model class
+// Define function to create user model class
 function User(name, email) {
   this.name = name;
   this.email = email;
@@ -29,16 +29,16 @@ function getUserName () {
     var getUserNameData = JSON.parse(localStorage.getItem('userProfile'));
     console.log (getUserNameData);
     console.log (getUserNameData.name);
-    document.getElementById('username').innerHTML = getUserNameData.name
-//     if (getUserNameData.tesla === true) {
-//       document.getElementById('icons').innerHTML = '<a href="https://www.netflix.com/" target = "_blank"><img src="tesla.png"/></a>'
-//     }
-//     if (getUserNameData.leaf === true) {
-//       document.getElementById('icons2').innerHTML = '<a href="http://www.hulu.com/welcome" target = "_blank"><img src="images/nissan.jpg"/></a>'
-//     }
-//     if (getUserNameData.bmw === true) {
-//       document.getElementById('icons3').innerHTML = '<a href="https://order.hbonow.com/" target = "_blank"><img src="images/bmw.jpg"/></a>'
-//     }
+    document.getElementById('username').innerHTML = 'Hi ' + getUserNameData.name + "!";
+    if (getUserNameData.tesla === true) {
+      document.getElementById('icons').innerHTML = '<a href="https://www.tesla.com/" target = "_blank"><img src="images/tesla.png"/></a>'
+    }
+    if (getUserNameData.leaf === true) {
+      document.getElementById('icons2').innerHTML = '<a href="http://www.nissanusa.com/leaf" target = "_blank"><img src="images/nissan.jpg"/></a>'
+    }
+    if (getUserNameData.bmw === true) {
+      document.getElementById('icons3').innerHTML = '<a href="https://www.bmwusa.com/i3‎" target = "_blank"><img src="images/bmw.jpg"/></a>'
+    }
   }
 };
 getUserName ();
