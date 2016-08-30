@@ -1,44 +1,38 @@
-
-// Define function to create user model class
-function User(name, email) {
-  this.name = name;
-  this.email = email;
-  this.tesla = tesla.checked;
-  this.leaf = leaf.checked;
-  this.bmw = bmw.checked;
-};
-
-function getUserData(event) {
-  // Avoid page reloading on form submission
-  event.preventDefault();
-  // Get values from the form
-  var fullName = event.target.fullName.value;
-  var email = event.target.fullName.email;
-  // Create new instance of user model
-  var newUser = new User(fullName, email);
-  // Set data to local storage
-  localStorage.setItem('userProfile', JSON.stringify(newUser));
+var locations = [];
+function station (city, fullAddress) {
+  this.city = city;
+  this.fullAddress = fullAddress;
+  locations.push(this);
 }
 
-var personInfo = document.getElementById('personinfo')
-personInfo.addEventListener('submit', getUserData);
+  var unionSqSea = new station ('seattle', "601 Union St, Seattle, WA 98101");
+  var SheratonTac = new station ('tacoma', "234 Main St, Tacoma, WA 98109");
+    console.log (unionSqSea);
 
-function getUserName () {
-  if (localStorage.userProfile) {
-    console.log (localStorage.userProfile)
-    var getUserNameData = JSON.parse(localStorage.getItem('userProfile'));
-    console.log (getUserNameData);
-    console.log (getUserNameData.name);
-    document.getElementById('username').innerHTML = 'Hi ' + getUserNameData.name + "!";
-    if (getUserNameData.tesla === true) {
-      document.getElementById('icons').innerHTML = '<a href="https://www.tesla.com/" target = "_blank"><img src="images/tesla.png"/></a>'
-    }
-    if (getUserNameData.leaf === true) {
-      document.getElementById('icons2').innerHTML = '<a href="http://www.nissanusa.com/leaf" target = "_blank"><img src="images/nissan.jpg"/></a>'
-    }
-    if (getUserNameData.bmw === true) {
-      document.getElementById('icons3').innerHTML = '<a href="https://www.bmwusa.com/i3‎" target = "_blank"><img src="images/bmw.jpg"/></a>'
-    }
-  }
-};
-getUserName ();
+var tracker = {
+  getForm: document.getElementById('search'),
+  searchWord: null,
+
+
+  getQueryData: function (event) {
+    event.preventDefault();
+    this.searchWord = event.target.searchName.value;
+    var queryWord = this.searchWord.toLowerCase();
+    console.log (queryWord);
+
+       for (var i = 0; i < locations.length; i++) {
+         if (locations[i] === queryWord) {
+           console.log('match');
+         }
+       }
+
+    // this below is NOT working, for some reason. Need help on this.
+
+    // if (locations.indexOf(queryWord)) > - 1 {
+    //   console.log('matched');
+    //     }
+
+      // if it matches, append the address to the page Here.
+  },
+}
+tracker.getForm.addEventListener('submit',tracker.getQueryData);
