@@ -40,12 +40,6 @@ font-family: sans-serif;
 
 /* HOME page */
 
-/*#icons {
-width: 5px;
-height: 5px;
-border-radius: 1px;
-}*/
-
 
 
 /* background image */
@@ -58,8 +52,6 @@ border-radius: 1px;
 }
 
 
-/*body { margin: 30px; }*/
-/*@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");*/
 
 #search {
   display: flex;
@@ -113,3 +105,17 @@ border-radius: 1px;
   #teslatext {
     padding-right: 10px;
   }
+  #image {
+    position: relative;
+    width: 100%;
+  }
+  h1 {
+    position: absolute;
+    top: 80px;
+    left: 500px;
+    width: 100%;
+  }
+  /*table {
+    border: 10px solid black;
+    background-color: teal;
+  }*/

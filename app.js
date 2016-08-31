@@ -1,38 +1,54 @@
 var locations = [];
-function station (city, fullAddress) {
+// constructor function
+function station (city, building, fullAddress) {
   this.city = city;
+  this.building = building;
   this.fullAddress = fullAddress;
   locations.push(this);
 }
-
-  var unionSqSea = new station ('seattle', "601 Union St, Seattle, WA 98101");
-  var SheratonTac = new station ('tacoma', "234 Main St, Tacoma, WA 98109");
-    console.log (unionSqSea);
-
+// Instantiating a new objects
+var unionSqSea = new station ('seattle', 'Union Square', "601 Union St, Seattle, WA 98101");
+var pacificPlSea = new station ('seattle', 'Pacific Place', "705 Olive Way, Seattle, WA 98101");
+var SheratonTac = new station ('tacoma', 'City Center', "234 Main St, Tacoma, WA 98109");
+var BellevueMall = new station ('bellevue', 'Lincoln Square', '600 100th Pl NE, Bellevue, WA 98004');
+var concTechBell = new station ('bellevue', 'Concur Technologies', '601 108th Ave NE, Bellevue, WA 98004');
+var southParkPor = new station ('portland', 'South Park Seafood', '914 SW Taylor St. Portland, OR 97204');
+var hotelJupiPor = new station ('portland', 'Hotel Jupiter','800 East Burnside, Portland, Or 97214');
+//Object literal
 var tracker = {
   getForm: document.getElementById('search'),
   searchWord: null,
+  searchMatches: [],
 
-
-  getQueryData: function (event) {
+  getQueryDataPrint: function (event) {
     event.preventDefault();
     this.searchWord = event.target.searchName.value;
     var queryWord = this.searchWord.toLowerCase();
     console.log (queryWord);
 
-       for (var i = 0; i < locations.length; i++) {
-         if (locations[i] === queryWord) {
-           console.log('match');
-         }
-       }
-
-    // this below is NOT working, for some reason. Need help on this.
-
-    // if (locations.indexOf(queryWord)) > - 1 {
-    //   console.log('matched');
-    //     }
-
-      // if it matches, append the address to the page Here.
+    for (var i = 0; i < locations.length; i++) {
+      if (locations[i].city === queryWord) {
+        console.log (locations[i].building + ", " +locations[i].fullAddress);
+        tracker.searchMatches.push(locations[i].city)
+        if (tracker.searchMatches.length > 1) {
+          console.log ('moreThan1')
+          var full_list = "";
+          for (var i = 0; i < tracker.searchMatches.length; i++){
+            full_list = full_list + locations[i].building + ", " + locations[i].fullAddress + '<br>'
+            var list = document.getElementById('image');
+            var head1 = document.createElement('h1');
+            head1.innerHTML = full_list;
+            list.appendChild(head1);
+          }
+        }
+        else {
+          var list = document.getElementById('image');
+          var head1 = document.createElement('h1');
+          head1.innerHTML = locations[i].building + ", " +locations[i].fullAddress;
+          list.appendChild(head1);
+        }
+      }
+    }
   },
 }
-tracker.getForm.addEventListener('submit',tracker.getQueryData);
+tracker.getForm.addEventListener('submit',tracker.getQueryDataPrint);
