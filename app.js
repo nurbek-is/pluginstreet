@@ -1,44 +1,54 @@
-
-// Deifne function to create user model class
-function User(name, email) {
-  this.name = name;
-  this.email = email;
-  this.tesla = tesla.checked;
-  this.leaf = leaf.checked;
-  this.bmw = bmw.checked;
-};
-
-function getUserData(event) {
-  // Avoid page reloading on form submission
-  event.preventDefault();
-  // Get values from the form
-  var fullName = event.target.fullName.value;
-  var email = event.target.fullName.email;
-  // Create new instance of user model
-  var newUser = new User(fullName, email);
-  // Set data to local storage
-  localStorage.setItem('userProfile', JSON.stringify(newUser));
+var locations = [];
+// constructor function
+function station (city, building, fullAddress) {
+  this.city = city;
+  this.building = building;
+  this.fullAddress = fullAddress;
+  locations.push(this);
 }
+// Instantiating a new objects
+var unionSqSea = new station ('seattle', 'Union Square', "601 Union St, Seattle, WA 98101");
+var pacificPlSea = new station ('seattle', 'Pacific Place', "705 Olive Way, Seattle, WA 98101");
+var SheratonTac = new station ('tacoma', 'City Center', "234 Main St, Tacoma, WA 98109");
+var BellevueMall = new station ('bellevue', 'Lincoln Square', '600 100th Pl NE, Bellevue, WA 98004');
+var concTechBell = new station ('bellevue', 'Concur Technologies', '601 108th Ave NE, Bellevue, WA 98004');
+var southParkPor = new station ('portland', 'South Park Seafood', '914 SW Taylor St. Portland, OR 97204');
+var hotelJupiPor = new station ('portland', 'Hotel Jupiter','800 East Burnside, Portland, Or 97214');
+//Object literal
+var tracker = {
+  getForm: document.getElementById('search'),
+  searchWord: null,
+  searchMatches: [],
 
-var personInfo = document.getElementById('personinfo')
-personInfo.addEventListener('submit', getUserData);
+  getQueryDataPrint: function (event) {
+    event.preventDefault();
+    this.searchWord = event.target.searchName.value;
+    var queryWord = this.searchWord.toLowerCase();
+    console.log (queryWord);
 
-function getUserName () {
-  if (localStorage.userProfile) {
-    console.log (localStorage.userProfile)
-    var getUserNameData = JSON.parse(localStorage.getItem('userProfile'));
-    console.log (getUserNameData);
-    console.log (getUserNameData.name);
-    document.getElementById('username').innerHTML = getUserNameData.name
-//     if (getUserNameData.tesla === true) {
-//       document.getElementById('icons').innerHTML = '<a href="https://www.netflix.com/" target = "_blank"><img src="tesla.png"/></a>'
-//     }
-//     if (getUserNameData.leaf === true) {
-//       document.getElementById('icons2').innerHTML = '<a href="http://www.hulu.com/welcome" target = "_blank"><img src="images/nissan.jpg"/></a>'
-//     }
-//     if (getUserNameData.bmw === true) {
-//       document.getElementById('icons3').innerHTML = '<a href="https://order.hbonow.com/" target = "_blank"><img src="images/bmw.jpg"/></a>'
-//     }
-  }
-};
-getUserName ();
+    for (var i = 0; i < locations.length; i++) {
+      if (locations[i].city === queryWord) {
+        console.log (locations[i].building + ", " +locations[i].fullAddress);
+        tracker.searchMatches.push(locations[i].city)
+        if (tracker.searchMatches.length > 1) {
+          console.log ('moreThan1')
+          var full_list = "";
+          for (var i = 0; i < tracker.searchMatches.length; i++){
+            full_list = full_list + locations[i].building + ", " + locations[i].fullAddress + '<br>'
+            var list = document.getElementById('image');
+            var head1 = document.createElement('h1');
+            head1.innerHTML = full_list;
+            list.appendChild(head1);
+          }
+        }
+        else {
+          var list = document.getElementById('image');
+          var head1 = document.createElement('h1');
+          head1.innerHTML = locations[i].building + ", " +locations[i].fullAddress;
+          list.appendChild(head1);
+        }
+      }
+    }
+  },
+}
+tracker.getForm.addEventListener('submit',tracker.getQueryDataPrint);

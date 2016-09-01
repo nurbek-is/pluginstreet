@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PlugInstreet</title>
     <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
   </head>
@@ -11,5 +11,24 @@
       <li><a href="type.html">Charging Type Options</a></li>
       <li><a href="myev.html">MyEV</a></li>
 </nav>
+<form id="search">
+<input type='text' name='searchName' placeholder="Type city name in US for EV Stations">
+<button id='submit' type="submit" name="button"><img src="images/icon_search.png" alt="search button" /></button>
+
+ &nbsp &nbsp
+<button type="button" name="button"><a href="map.html"><img src="images/map.png" id='map' alt="Map" /></a></button>
+</form>
+
+<div id="image">
+  <img src="images/chargingmap.png" id='bg' alt="charging stations map"/>
+  <!-- <table id='table'> </table> -->
+  <!-- <h2 id='append'>Text append goes here</h2> -->
+</div>
+
   </body>
+  <script type="text/javascript" src='app.js'>
+  </script>
+  <script src='jquery-3.1.0.min.js'>
+
+  </script>
 </html>
