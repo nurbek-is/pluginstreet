@@ -20,7 +20,7 @@ var tracker = {
   searchWord: null,
   searchMatches: [],
 
-  getQueryData: function (event) {
+  getQueryDataNmatch: function (event) {
     event.preventDefault();
     this.searchWord = event.target.searchName.value;
     var queryWord = this.searchWord.toLowerCase();
@@ -29,35 +29,38 @@ var tracker = {
     for (var i = 0; i < locations.length; i++) {
       if (locations[i].city === queryWord) {
         console.log (locations[i].building + ", " +locations[i].fullAddress);
-        tracker.searchMatches.push(locations[i].city)
+        tracker.searchMatches.push(locations[i].building + ", " +locations[i].fullAddress);
+        console.log(tracker.searchMatches.length);
+        }
       }
-    }
-  },
+    },
 
   displaySearchResults: function (event) {
-          event.preventDefault();
-        if (tracker.searchMatches.length > 1) {
-          console.log ('moreThan1')
-            console.log (tracker.searchMatches.length);
+    event.preventDefault();
+
           var full_list = "";
           for (var i = 0; i < tracker.searchMatches.length; i++){
-            full_list = full_list + locations[i].building + ", " + locations[i].fullAddress + '<br>'
+            full_list = full_list + tracker.searchMatches[i] + '<br>';
+            console.log (full_list);
             var list = document.getElementById('image');
             var head1 = document.createElement('h1');
             head1.innerHTML = full_list;
             list.appendChild(head1);
             console.log (tracker.searchMatches.length);
+            // break;
           }
-        }
-        else {
-          var list = document.getElementById('image');
-          var head1 = document.createElement('h1');
-          head1.innerHTML = "That city is not in our system yet"
-          list.appendChild(head1);
-    }
-  },
+
+        // else {
+        //   var list = document.getElementById('image');
+        //   var head1 = document.createElement('h1');
+        //   head1.innerHTML = "That city is not in our system yet"
+        //   list.appendChild(head1);
+        //   }
+
+     },
+
   runAllMethods: function () {
-    tracker.getQueryData (event);
+    tracker.getQueryDataNmatch (event);
     tracker.displaySearchResults (event);
   },
 }
