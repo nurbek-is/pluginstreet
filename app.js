@@ -23,42 +23,39 @@ var tracker = {
   getQueryDataNmatch: function (event) {
     event.preventDefault();
     this.searchWord = event.target.searchName.value;
-    var queryWord = this.searchWord.toLowerCase();
-    console.log (queryWord);
+    this.searchWord = this.searchWord.toLowerCase();
+    console.log (this.searchWord);
 
     for (var i = 0; i < locations.length; i++) {
-      if (locations[i].city === queryWord) {
-        console.log (locations[i].building + ", " +locations[i].fullAddress);
-        tracker.searchMatches.push(locations[i].building + ", " +locations[i].fullAddress);
+      if (locations[i].city === this.searchWord) {
+        console.log (locations[i].building + ", " + locations[i].fullAddress);
+        tracker.searchMatches.push(locations[i].building + ", " + locations[i].fullAddress);
         console.log(tracker.searchMatches.length);
-        }
-      }
-    },
+
+      };
+    };
+  },
 
   displaySearchResults: function (event) {
     event.preventDefault();
+    var full_list = "";
+    for (var i = 0; i < tracker.searchMatches.length; i++) {
+      full_list = full_list + tracker.searchMatches[i] + '<br>';
+      console.log (full_list);
+      var list = document.getElementById('image');
+      var head1 = document.createElement('h1');
+      head1.innerHTML = full_list;
+      list.appendChild(head1);
+    };
+    // if (tracker.searchMatches.indexOf(tracker.searchWord) > -1) {
+    // console.log ('work');
+    // var list = document.getElementById('image');
+    // var head1 = document.createElement('h1');
+    // head1.innerHTML = "That city is not in our system yet";
+    // list.appendChild(head1);
+    // };
 
-          var full_list = "";
-          for (var i = 0; i < tracker.searchMatches.length; i++){
-            full_list = full_list + tracker.searchMatches[i] + '<br>';
-            console.log (full_list);
-            var list = document.getElementById('image');
-            var head1 = document.createElement('h1');
-            head1.innerHTML = full_list;
-            list.appendChild(head1);
-            console.log (tracker.searchMatches.length);
-            // break;
-          }
-
-        // else {
-        //   var list = document.getElementById('image');
-        //   var head1 = document.createElement('h1');
-        //   head1.innerHTML = "That city is not in our system yet"
-        //   list.appendChild(head1);
-        //   }
-
-     },
-
+  },
   runAllMethods: function () {
     tracker.getQueryDataNmatch (event);
     tracker.displaySearchResults (event);
