@@ -19,6 +19,7 @@ var tracker = {
   getForm: document.getElementById('search'),
   searchWord: null,
   searchMatches: [],
+  clearButton: document.getElementById('clear'),
 
   getQueryDataNmatch: function (event) {
     event.preventDefault();
@@ -46,6 +47,7 @@ var tracker = {
       var head1 = document.createElement('h1');
       head1.innerHTML = full_list;
       list.appendChild(head1);
+
     };
     // if (tracker.searchMatches.indexOf(tracker.searchWord) > -1) {
     // console.log ('work');
@@ -56,9 +58,17 @@ var tracker = {
     // };
 
   },
+clearData: function() {
+  var clearList = document.getElementById('image');
+  clearList.innerHTML = "";
+  location.reload ();
+},
+
+
   runAllMethods: function () {
     tracker.getQueryDataNmatch (event);
     tracker.displaySearchResults (event);
   },
-}
+};
 tracker.getForm.addEventListener('submit',tracker.runAllMethods);
+tracker.clearButton.addEventListener('click',tracker.clearData);
