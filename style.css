@@ -41,16 +41,13 @@ font-family: sans-serif;
 /* HOME page */
 
 
-
 /* background image */
  #bg {
   max-height: 100%;
   max-width: 100%;
-
   width: 100%;
   height: auto;
 }
-
 
 
 #search {
@@ -65,7 +62,6 @@ font-family: sans-serif;
 #search input {
   width: 290px;
   height: 40px;
-
   background: #fcfcfc;
   border: 1px solid #aaa;
   border-radius: 5px;
@@ -90,7 +86,6 @@ font-family: sans-serif;
   width:30px;
   height: 30px;
   border-radius: 5px;
-  /*padding: 5px;*/
 }
 
  /****** TYPE of CHARGING PAGE **********/
@@ -101,7 +96,6 @@ font-family: sans-serif;
     margin: 10px;
 
   }
-
   #teslatext {
     padding-right: 10px;
   }
@@ -117,9 +111,12 @@ font-family: sans-serif;
   }
 #clearlist {
   width: 180px!important;
-
   height: 25px!important;
-
   border-radius: 5px!important;
+}
 
+#main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
