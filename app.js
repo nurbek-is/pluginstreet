@@ -61,6 +61,7 @@ var tracker = {
 clearData: function() {
   var clearList = document.getElementById('image');
   clearList.innerHTML = "";
+  tracker.searchMatches = [];
   location.reload ();
 },
 
