@@ -1,0 +1,323 @@
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background: url(background-theatre.png) center no-repeat !important;
+  background-size: cover !important;
+}
+
+section {
+  text-align: center;
+  padding: 25px;
+  background-color: lightgrey;
+}
+
+nav {
+  text-align: center;
+  padding: 25px;
+  background-color: #6666ff;
+  /*#5FB6E1 !important;*/
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 25px;
+}
+
+input {
+  width: 300px;
+  height: 40px;
+  font-size: 20px;
+}
+
+button {
+  width: 100px;
+  height: 46px;
+  margin-left: 20px;
+}
+
+strong {
+  font-size: 20px;
+  color: white;
+  font-family: sans-serif;
+}
+
+img {
+  margin-left: 10px;
+  height: 60px;
+  width: 60px;
+}
+
+label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  font-size: 25px;
+  height: 60px;
+}
+
+p {
+  text-align: center;
+  font-size: 20px;
+}
+
+.input {
+  float: right;
+  width: 20px;
+  height: 50px;
+}
+
+.itemPushed {
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+#container {
+  width: 50px;
+}
+
+#menuForm {
+  display: block;
+}
+
+#pushButton {
+  margin-left: 40px;
+  font-family: sans-serif;
+  font-size: 18px;
+  width:200px;
+  height: 50px;
+}
+
+#container {
+width:50px;
+}
+
+#kinostream {
+border-radius:8px;
+height:75px;
+width:300px;
+}
+
+#menuForm {
+display:block;
+}
+
+#movie-theatre {
+ border-radius:8px;
+ height: 250px;
+ width: 300px;
+}
+
+#pushButton {
+background:#5FB6E1;
+border:1px solid #F5F5F5;
+border-color:#5FB6E1;
+border-radius:8px;
+color:#2C3238;
+font-family:'Varela Round', Helvetica, serif;
+font-size:18px;
+height:50px;
+margin:1px;
+padding:5px;
+text-align:center;
+width:100px;
+}
+
+#searchButton {
+background:#5FB6E1;
+border:1px solid #F5F5F5;
+border-color:#5FB6E1;
+border-radius:8px;
+color:#2C3238;
+font-family:'Varela Round', Helvetica, serif;
+font-size:18px;
+height:50px;
+margin:1px;
+padding:5px;
+text-align:center;
+width:200px;
+}
+
+#searchForm {
+align-items:center;
+display:flex;
+flex-direction:column;
+}
+
+#signupNav ul li {
+font-size:1.2em;
+}
+
+.input {
+float:right;
+height:50px;
+width:20px;
+}
+
+.itemPushed {
+font-size:18px;
+margin-left:10px;
+}
+
+.shadow {
+-moz-box-shadow:3px 3px 5px 6px #ccc;
+-webkit-box-shadow:3px 3px 5px 6px #ccc;
+box-shadow:3px 3px 5px 6px #ccc;
+}
+.grow {
+  transition: all .2s ease-in-out !important;
+}
+.grow:hover {
+  transform: scale(1.1) !important;
+}
+
+
+body {
+background:#ECEEEF;
+color:#777B7E;
+font:18px normal 'Varela Round', Helvetica, serif;
+margin:100px auto;
+max-width:462px;
+padding:0 40px;
+text-align:center;
+}
+
+button {
+height:46px;
+margin-left:20px;
+width:100px;
+}
+
+form {
+display:flex;
+justify-content:center;
+margin-bottom:25px;
+margin-top:50px;
+}
+
+html {
+height:100%;
+width:100%;
+}
+
+input {
+border:1px solid #D5DDE4;
+border-radius:5px;
+color:#2C3238;
+font-family:'Varela Round', Helvetica, serif;
+font-size:18px;
+height:40px;
+margin:10px 0;
+padding:31px 0;
+text-align:center;
+width:360px;
+}
+
+label {
+align-items:center;
+display:flex;
+font-size:25px;
+height:60px;
+justify-content:center;
+padding:0;
+}
+
+li {
+color:black;
+display:inline;
+flex-direction:row;
+font:impact, sans-serif;
+font-size:1.5em;
+justify-content:space-around;
+list-style-type:none;
+}
+
+main {
+background:#F0F8FF;
+border-radius:8px;
+margin-top:30px;
+max-width:auto;
+min-width:auto;
+padding-bottom:50px;
+padding-top:20px;
+}
+
+nav {
+background:#6666ff;
+background-color:#6666ff;
+display:inline;
+justify-content:space-between;
+left:0;
+margin-bottom:500px;
+margin-top:0;
+padding:0;
+position:fixed;
+text-align:center;
+top:0;
+width:100%;
+}
+
+section {
+background-color:#D3D3D3;
+padding:25px;
+text-align:center;
+}
+
+strong {
+font-size:16px;
+}
+
+ul {
+display:flex;
+justify-content:space-around;
+}
+
+ul li a {
+color:#FFF;
+text-decoration:none;
+}
+a {
+  color:tomato;
+}
+
+nav a, nav a:visited {
+  color:black;
+}
+
+nav a.selected, nav a:hover {
+  color:tomato;
+}
+.face:hover {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+.sharing{
+  height: 28px;
+  width: 27px;
+}
