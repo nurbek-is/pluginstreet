@@ -1,0 +1,22 @@
+#nav {
+  display: flex;
+  justify-content:  space-around;
+  background-color: grey;
+  text-decoration: none;
+}
+
+#teslacharge {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+
+#teslatext {
+  padding-right: 10px;
+}
+
+#level2 {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
