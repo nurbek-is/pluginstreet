@@ -33,7 +33,6 @@ var tracker = {
         console.log (locations[i].building + ", " + locations[i].fullAddress);
         tracker.searchMatches.push(locations[i].building + ", " + locations[i].fullAddress);
         console.log(tracker.searchMatches.length);
-
       };
     };
   },
@@ -42,13 +41,14 @@ var tracker = {
     event.preventDefault();
     var full_list = "";
     for (var i = 0; i < tracker.searchMatches.length; i++) {
-      full_list = full_list + tracker.searchMatches[i] + '<br>';
+      full_list = tracker.searchMatches[i];
       console.log (full_list);
-      var list = document.getElementById('image');
-      var head1 = document.createElement('h1');
-      head1.innerHTML = full_list;
-      list.appendChild(head1);
-
+      var table = document.getElementById('image');
+      var tableRow = document.createElement('tr');
+      var tableData = document.createElement('td');
+      tableData.innerHTML = full_list;
+      tableRow.appendChild (tableData);
+      table.appendChild(tableRow);
     };
     // if (tracker.searchMatches.indexOf(tracker.searchWord) > -1) {
     // console.log ('work');
@@ -57,7 +57,6 @@ var tracker = {
     // head1.innerHTML = "That city is not in our system yet";
     // list.appendChild(head1);
     // };
-
   },
 clearData: function() {
   var clearList = document.getElementById('image');
