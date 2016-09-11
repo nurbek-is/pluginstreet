@@ -23,7 +23,7 @@ function getUserData(event) {
 var personInfo = document.getElementById('personinfo')
 personInfo.addEventListener('submit', getUserData);
 
-// This function will store your name and your selectino of car types in localStorage and display on right top corner
+// This function will store your name and your selection of car types in localStorage and display on right top corner
 function getUserName () {
   if (localStorage.userProfile) {
     console.log (localStorage.userProfile)

@@ -21,17 +21,19 @@ var tracker = {
   searchWord: null,
   searchMatches: [],
   clearButton: document.getElementById('clear'),
+  matchFound: null,
 
   getQueryDataNmatch: function (event) {
     event.preventDefault();
     this.searchWord = event.target.searchName.value;
     this.searchWord = this.searchWord.toLowerCase();
+    tracker.matchFound = false
     console.log (this.searchWord);
 
     for (var i = 0; i < locations.length; i++) {
       if (locations[i].city === this.searchWord) {
-        console.log (locations[i].building + ", " + locations[i].fullAddress);
-        tracker.searchMatches.push(locations[i].building + ", " + locations[i].fullAddress);
+        console.log (locations[i].building + ', ' + locations[i].fullAddress);
+        tracker.searchMatches.push(locations[i].building + ', ' + locations[i].fullAddress);
         console.log(tracker.searchMatches.length);
       };
     };
@@ -39,7 +41,7 @@ var tracker = {
 
   displaySearchResults: function (event) {
     event.preventDefault();
-    var full_list = "";
+    var full_list = '';
     for (var i = 0; i < tracker.searchMatches.length; i++) {
       full_list = tracker.searchMatches[i];
       console.log (full_list);
@@ -49,21 +51,22 @@ var tracker = {
       tableData.innerHTML = full_list;
       tableRow.appendChild (tableData);
       table.appendChild(tableRow);
+      tracker.matchFound = true;
     };
-    // if (tracker.searchMatches.indexOf(tracker.searchWord) > -1) {
-    // console.log ('work');
-    // var list = document.getElementById('image');
-    // var head1 = document.createElement('h1');
-    // head1.innerHTML = "That city is not in our system yet";
-    // list.appendChild(head1);
-    // };
+    if (tracker.matchFound === false) {
+      console.log ('work');
+      var list = document.getElementById('image');
+      var head1 = document.createElement('h1');
+      head1.innerHTML = 'That city is not in our system yet';
+      list.appendChild(head1);
+    };
   },
-clearData: function() {
-  var clearList = document.getElementById('image');
-  clearList.innerHTML = "";
-  tracker.searchMatches = [];
-  location.reload ();
-},
+  clearData: function() {
+    var clearList = document.getElementById('image');
+    clearList.innerHTML = '';
+    tracker.searchMatches = [];
+    location.reload ();
+  },
 
 
   runAllMethods: function () {
