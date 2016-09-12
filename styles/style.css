@@ -7,6 +7,10 @@ body {
 -moz-background-size: cover;
 -o-background-size: cover;
 background-size: cover;
+/*max-height: 100%;
+max-width: 100%;
+width: 100%;
+height: auto;*/
 }
 
 #nav {
@@ -16,13 +20,6 @@ background-size: cover;
   text-decoration: none;
 }
 
-/* background image */
- #bg {
-  max-height: 100%;
-  max-width: 100%;
-  width: 100%;
-  height: auto;
-}
 
 #search {
   display: flex;
@@ -105,10 +102,10 @@ table, td {
     left: 500px;
     width: 100%;
 }
-#image {
+#dispalyArea {
   position: relative;
 }
-.textresults {
+.displaySearchResults {
   display: flex;
   flex-direction: row;
   justify-content: center;

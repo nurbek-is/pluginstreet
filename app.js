@@ -45,7 +45,7 @@ var tracker = {
     for (var i = 0; i < tracker.searchMatches.length; i++) {
       full_list = tracker.searchMatches[i];
       console.log (full_list);
-      var table = document.getElementById('image');
+      var table = document.getElementById('dispalyArea');
       var tableRow = document.createElement('tr');
       var tableData = document.createElement('td');
       tableData.innerHTML = full_list;
@@ -55,14 +55,14 @@ var tracker = {
     };
     if (tracker.matchFound === false) {
       console.log ('work');
-      var list = document.getElementById('image');
+      var list = document.getElementById('dispalyArea');
       var head1 = document.createElement('h1');
       head1.innerHTML = 'That city is not in our system yet';
       list.appendChild(head1);
     };
   },
   clearData: function() {
-    var clearList = document.getElementById('image');
+    var clearList = document.getElementById('dispalyArea');
     clearList.innerHTML = '';
     tracker.searchMatches = [];
     location.reload ();
