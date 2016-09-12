@@ -50,13 +50,6 @@ height: auto;*/
   box-shadow:  15px 10px 15px #ebebeb inset;
 }
 
-
-h1 {
-  position: absolute;
-  top: 80px;
-  left: 500px;
-  width: 100%;
-}
 #main {
   display: flex;
   flex-direction: row;
@@ -99,15 +92,11 @@ h1 {
 table, td {
     border: 1px solid black;
     top: 80px;
-    left: 500px;
-    width: 100%;
+    background-color: pink;
 }
-#dispalyArea {
-  position: relative;
-}
+
 .displaySearchResults {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background-color: pink;
 }
