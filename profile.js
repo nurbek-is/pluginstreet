@@ -19,7 +19,6 @@ function getUserData(event) {
   // Set data to local storage
   localStorage.setItem('userProfile', JSON.stringify(newUser));
 }
-
 var personInfo = document.getElementById('personinfo')
 personInfo.addEventListener('submit', getUserData);
 
@@ -30,7 +29,9 @@ function getUserName () {
     var getUserNameData = JSON.parse(localStorage.getItem('userProfile'));
     console.log (getUserNameData);
     console.log (getUserNameData.name);
-    document.getElementById('username').innerHTML = 'Hi ' + getUserNameData.name + "!";
+    var firstLetterName = getUserNameData.name.charAt(0).toUpperCase ();
+    var restLetterName = getUserNameData.name.slice(1);
+    document.getElementById('username').innerHTML = 'Hi ' + firstLetterName + restLetterName + "!";
     if (getUserNameData.tesla === true) {
       document.getElementById('icons').innerHTML = '<a href="https://www.tesla.com/" target = "_blank"><img src="images/tesla.png"/></a>'
     }
