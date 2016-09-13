@@ -20,7 +20,6 @@ var tracker = {
   getForm: document.getElementById('search'),
   searchWord: null,
   searchMatches: [],
-  clearButton: document.getElementById('clearlist'),
   matchFound: false,
   clearText: document.getElementById('displayArea'),
 
@@ -28,7 +27,6 @@ var tracker = {
     event.preventDefault();
     this.searchWord = event.target.searchName.value;
     this.searchWord = this.searchWord.toLowerCase();
-    tracker.matchFound = false;
     console.log (this.searchWord);
 
     for (var i = 0; i < locations.length; i++) {
@@ -69,7 +67,6 @@ var tracker = {
     tracker.searchMatches = [];
   },
 
-
   runAllMethods: function () {
     tracker.clearData (event);
     tracker.getQueryDataNmatch (event);
@@ -77,4 +74,3 @@ var tracker = {
   },
 };
 tracker.getForm.addEventListener('submit',tracker.runAllMethods);
-// tracker.clearButton.addEventListener('click',tracker.clearData);
