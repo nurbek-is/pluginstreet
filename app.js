@@ -28,7 +28,7 @@ var tracker = {
     this.searchWord = event.target.searchName.value;
     this.searchWord = this.searchWord.toLowerCase();
     console.log (this.searchWord);
-
+    tracker.matchFound = false;
     for (var i = 0; i < locations.length; i++) {
       if (locations[i].city === this.searchWord) {
         console.log (locations[i].building + ', ' + locations[i].fullAddress);
