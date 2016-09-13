@@ -5,31 +5,27 @@
     <title>PlugInstreet</title>
     <link rel="stylesheet" href="styles/style.css" media="screen" title="no title" charset="utf-8">
   </head>
-  <body>
+  <body background='images/chargingmap.png'>
 <nav id='nav'>
       <li><a href="index.html">Home</a></li>
       <li><a href="type.html">Charging Type Options</a></li>
+      <li><a href="map.html">Map</a></li>
       <li><a href="myev.html">MyEV</a></li>
 </nav>
-<main id='main'>
 
 <form id="search">
-<input type='text' name='searchName' placeholder="Type city name in US for EV Stations">
-<button id='submit' type="submit" name="button"><img src="images/icon_search.png" alt="search button" /></button>
+<input class='formfield' type='text' name='searchName' placeholder="Type city name in US for EV Stations">
+<button class='formfield' id='submit' type="submit" name="button"><img src="images/icon_search.png" alt="search button" /></button>
 
- &nbsp &nbsp
-<button type="button" name="button"><a href="map.html"><img src="images/map.png" id='map' alt="Map" /></a></button>
+<button class='formfield' id='mapbutton'type="button" name="button"><a href="map.html"><img src="images/map.png" id='map' alt="Map" /></a></button>
 </form>
 
-<form id="clear" action="index.html" method="post">
-  <input id='clearlist' type="button" name="clearfield" value="CLEAR LIST">
-</form>
-</main>
+<section class="displaySearchResults">
 
-<div id="image">
-  <img src="images/chargingmap.png" id='bg' alt="charging stations map"/>
+<div id="displayArea">
 
 </div>
+</section>
 
 <footer id='icons'>
   <a href="https://www.facebook.com/" target = "_blank"><img class='logos' src="images/facebook.png" alt="facebook logo"/></a>
@@ -39,10 +35,9 @@
   <a href="https://www.twitter.com/" target ="_blank"><img class = 'logos' src="images/twitter.png" alt="twitter" /></a>
 
 </footer>
-
   </body>
-  <script src="profile.js"></script>
   <script type="text/javascript" src='app.js'>
+  <script src="profile.js"></script>
   </script>
   <script src='jquery-3.1.0.min.js'>
   </script>
