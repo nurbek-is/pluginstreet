@@ -20,14 +20,15 @@ var tracker = {
   getForm: document.getElementById('search'),
   searchWord: null,
   searchMatches: [],
-  clearButton: document.getElementById('clear'),
-  matchFound: null,
+  clearButton: document.getElementById('clearlist'),
+  matchFound: false,
+  clearText: document.getElementById('displayArea'),
 
   getQueryDataNmatch: function (event) {
     event.preventDefault();
     this.searchWord = event.target.searchName.value;
     this.searchWord = this.searchWord.toLowerCase();
-    tracker.matchFound = false
+    tracker.matchFound = false;
     console.log (this.searchWord);
 
     for (var i = 0; i < locations.length; i++) {
@@ -45,34 +46,35 @@ var tracker = {
     for (var i = 0; i < tracker.searchMatches.length; i++) {
       full_list = tracker.searchMatches[i];
       console.log (full_list);
-      var table = document.getElementById('dispalyArea');
+      var table = document.getElementById('displayArea');
       var tableRow = document.createElement('tr');
       var tableData = document.createElement('td');
       tableData.innerHTML = full_list;
       tableRow.appendChild (tableData);
+      console.log (tableRow);
       table.appendChild(tableRow);
       tracker.matchFound = true;
     };
     if (tracker.matchFound === false) {
-      console.log ('work');
-      var list = document.getElementById('dispalyArea');
+      console.log ('not found');
+      var list = document.getElementById('displayArea');
       var head1 = document.createElement('h1');
-      head1.innerHTML = 'That city is not in our system yet';
+      head1.innerHTML = 'That City Is Not in Our System Yet';
       list.appendChild(head1);
     };
   },
   clearData: function() {
-    var clearList = document.getElementById('dispalyArea');
-    clearList.innerHTML = '';
+    var clearText = document.getElementById('displayArea');
+    clearText.innerHTML = '';
     tracker.searchMatches = [];
-    location.reload ();
   },
 
 
   runAllMethods: function () {
+    tracker.clearData (event);
     tracker.getQueryDataNmatch (event);
     tracker.displaySearchResults (event);
   },
 };
 tracker.getForm.addEventListener('submit',tracker.runAllMethods);
-tracker.clearButton.addEventListener('click',tracker.clearData);
+// tracker.clearButton.addEventListener('click',tracker.clearData);
