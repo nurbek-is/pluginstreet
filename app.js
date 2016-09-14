@@ -8,12 +8,12 @@ function station (city, chargeType, building, fullAddress) {
   locations.push(this);
 }
 // Instantiating new objects
-var unionSqSea = new station ('seattle', 'Level 2', 'Union Square', "601 Union St, Seattle, WA 98101");
-var pacificPlSea = new station ('seattle','Level 2', 'Pacific Place', "705 Olive Way, Seattle, WA 98101");
+var unionSqSea = new station ('seattle', 'Level 2 Charger', 'Union Square', "601 Union St, Seattle, WA 98101");
+var pacificPlSea = new station ('seattle','Level 2 Charger', 'Pacific Place', "705 Olive Way, Seattle, WA 98101");
 var SheratonTac = new station ('tacoma', 'DC Fast Charger', 'City Center', "234 Main St, Tacoma, WA 98109");
-var BellevueMall = new station ('bellevue', 'Level 2', 'Lincoln Square', '600 100th Pl NE, Bellevue, WA 98004');
+var BellevueMall = new station ('bellevue', 'Level 2 Charger', 'Lincoln Square', '600 100th Pl NE, Bellevue, WA 98004');
 var concTechBell = new station ('bellevue', 'DC Fast Charger', 'Concur Technologies', '601 108th Ave NE, Bellevue, WA 98004');
-var southParkPor = new station ('portland', 'Level 2', 'South Park Seafood', '914 SW Taylor St. Portland, OR 97204');
+var southParkPor = new station ('portland', 'Level 2 Charger', 'South Park Seafood', '914 SW Taylor St. Portland, OR 97204');
 var hotelJupiPor = new station ('portland', 'Tesla Supercharger', 'Hotel Jupiter','800 East Burnside, Portland, OR 97214');
 //Object literal
 var tracker = {
@@ -22,6 +22,7 @@ var tracker = {
   searchMatches: [],
   matchFound: false,
   clearText: document.getElementById('displayArea'),
+  chargerOption: [],
 
   getQueryDataNmatch: function (event) {
     event.preventDefault();
@@ -31,9 +32,9 @@ var tracker = {
     tracker.matchFound = false;
     for (var i = 0; i < locations.length; i++) {
       if (locations[i].city === this.searchWord) {
-        console.log (locations[i].building + ', ' + locations[i].fullAddress);
-        tracker.searchMatches.push(locations[i].building + ', ' + locations[i].fullAddress);
-        console.log(tracker.searchMatches.length);
+        console.log (locations[i].chargeType + ',' + locations[i].building + ', ' + locations[i].fullAddress);
+        tracker.searchMatches.push(locations[i].chargeType + '; ' + locations[i].building + ', ' + locations[i].fullAddress);
+        tracker.chargerOption.push (locations[i].chargeType)
       };
     };
   },
