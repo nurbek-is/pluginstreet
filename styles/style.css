@@ -82,6 +82,10 @@ table, td {
     border: 1px solid black;
     top: 80px;
     background-color: pink;
+    width: 500px;
+    height: 40px;
+    text-align: center;
+
 }
 
 .displaySearchResults {

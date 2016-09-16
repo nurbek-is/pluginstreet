@@ -8,12 +8,14 @@ function station (city, chargeType, building, fullAddress) {
   locations.push(this);
 }
 // Instantiating new objects
-var unionSqSea = new station ('seattle', 'Level 2', 'Union Square', "601 Union St, Seattle, WA 98101");
-var pacificPlSea = new station ('seattle','Level 2', 'Pacific Place', "705 Olive Way, Seattle, WA 98101");
-var SheratonTac = new station ('tacoma', 'DC Fast Charger', 'City Center', "234 Main St, Tacoma, WA 98109");
-var BellevueMall = new station ('bellevue', 'Level 2', 'Lincoln Square', '600 100th Pl NE, Bellevue, WA 98004');
+var fourthMadis = new station ('seattle', 'Level 2 Charger', 'Fourth and Madison Building', "925 4th Avenue, Seattle, WA 98101");
+var thirdMadis = new station ('seattle','DC Fast Charger', 'Wells Fargo Center', "999 3rd Ave, Seattle, WA, 98104");
+var pikeHarvard = new station ('seattle','DC Fast Charger', 'Harvard Market', "1406 Harvard Ave, Seattle, WA 98122");
+var lakeUnion = new station ('seattle','Level 2 Charger', 'Amazon - Obidos/Rufus', "550 Terry Ave N, Seattle, WA, 98109");
+var tacoPubUti = new station ('tacoma', 'Level 2 Charger', 'Tacoma Public Utilities', "3628 S 35th St, Tacoma, Washington 98409");
+var BellevueMall = new station ('bellevue', 'Level 2 Charger', 'Lincoln Square', '600 100th Pl NE, Bellevue, WA 98004');
 var concTechBell = new station ('bellevue', 'DC Fast Charger', 'Concur Technologies', '601 108th Ave NE, Bellevue, WA 98004');
-var southParkPor = new station ('portland', 'Level 2', 'South Park Seafood', '914 SW Taylor St. Portland, OR 97204');
+var southParkPor = new station ('portland', 'Level 2 Charger', 'South Park Seafood', '914 SW Taylor St. Portland, OR 97204');
 var hotelJupiPor = new station ('portland', 'Tesla Supercharger', 'Hotel Jupiter','800 East Burnside, Portland, OR 97214');
 //Object literal
 var tracker = {
@@ -28,28 +30,27 @@ var tracker = {
     this.searchWord = event.target.searchName.value;
     this.searchWord = this.searchWord.toLowerCase();
     console.log (this.searchWord);
-
+    tracker.matchFound = false;
     for (var i = 0; i < locations.length; i++) {
       if (locations[i].city === this.searchWord) {
-        console.log (locations[i].building + ', ' + locations[i].fullAddress);
+        console.log (locations[i].chargeType + ',' + locations[i].building + ', ' + locations[i].fullAddress);
         tracker.searchMatches.push(locations[i].building + ', ' + locations[i].fullAddress);
-        console.log(tracker.searchMatches.length);
       };
     };
   },
 
-  displaySearchResults: function (event) {
-    event.preventDefault();
+  displaySearchResults: function () {
     var full_list = '';
     for (var i = 0; i < tracker.searchMatches.length; i++) {
       full_list = tracker.searchMatches[i];
-      console.log (full_list);
       var table = document.getElementById('displayArea');
       var tableRow = document.createElement('tr');
       var tableData = document.createElement('td');
       tableData.innerHTML = full_list;
       tableRow.appendChild (tableData);
-      console.log (tableRow);
+      var tD = document.createElement('td');
+      tD.innerHTML = locations[i].chargeType;
+      tableRow.appendChild (tD);
       table.appendChild(tableRow);
       tracker.matchFound = true;
     };
@@ -66,11 +67,10 @@ var tracker = {
     clearText.innerHTML = '';
     tracker.searchMatches = [];
   },
-
   runAllMethods: function () {
     tracker.clearData (event);
     tracker.getQueryDataNmatch (event);
-    tracker.displaySearchResults (event);
+    tracker.displaySearchResults ();
   },
 };
 tracker.getForm.addEventListener('submit',tracker.runAllMethods);
