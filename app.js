@@ -40,16 +40,22 @@ var tracker = {
   },
 
   displaySearchResults: function () {
-    var full_list = '';
+    var buildingAddress = '';
     for (var i = 0; i < tracker.searchMatches.length; i++) {
-      full_list = tracker.searchMatches[i];
+      buildingAddress = tracker.searchMatches[i];
       var table = document.getElementById('displayArea');
       var tableRow = document.createElement('tr');
+      var aTag = document.createElement('a');
       var tableData = document.createElement('td');
-      tableData.innerHTML = full_list;
+      aTag.href = 'gmap.html';
+      aTag.innerHTML = buildingAddress;
+      tableData.appendChild(aTag);
       tableRow.appendChild (tableData);
+      var aTag4Charger = document.createElement('a');
       var tD = document.createElement('td');
-      tD.innerHTML = locations[i].chargeType;
+      aTag4Charger.href = 'type.html';
+      aTag4Charger.innerHTML = locations[i].chargeType;
+      tD.appendChild(aTag4Charger);
       tableRow.appendChild (tD);
       table.appendChild(tableRow);
       tracker.matchFound = true;
@@ -68,7 +74,7 @@ var tracker = {
     tracker.searchMatches = [];
   },
   runAllMethods: function () {
-    tracker.clearData (event);
+    tracker.clearData ();
     tracker.getQueryDataNmatch (event);
     tracker.displaySearchResults ();
   },

@@ -6,13 +6,23 @@
     <link rel="stylesheet" href="styles/gmap.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <h3>My Google Maps Demo</h3>
+
+    <div id="floating-panel">
+      <input id="address" type="textbox" value="Sydney, NSW">
+      <input id="submit" type="button" value="Search">
+    </div>
     <div id="map"></div>
+
+
+
     <script src='gmap.js'>
     </script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlgZh5ITtld4lspbROD-xB19sKbTwlhVs&callback=initMap"
       async defer>
+    </script>
+    <script src='app.js'>
+
     </script>
 
   </body>
