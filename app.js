@@ -24,6 +24,8 @@ var tracker = {
   searchMatches: [],
   matchFound: false,
   clearText: document.getElementById('displayArea'),
+  matchedAddresses: [],
+  // matchedOneAdrs: null,
 
   getQueryDataNmatch: function (event) {
     event.preventDefault();
@@ -35,8 +37,16 @@ var tracker = {
       if (locations[i].city === this.searchWord) {
         console.log (locations[i].chargeType + ',' + locations[i].building + ', ' + locations[i].fullAddress);
         tracker.searchMatches.push(locations[i].building + ', ' + locations[i].fullAddress);
+        tracker.matchedOneAdrs = locations[i].fullAddress;
+        tracker.matchedAddresses.push(locations[i].fullAddress);
+        // localStorage.setItem('foundAddresses', JSON.stringify(tracker.matchedAddresses));
+        // localStorage.setItem('foundOneAdrs', JSON.stringify (tracker.matchedOneAdrs))
       };
     };
+  },
+  addToLocalStorage: function () {
+    localStorage.setItem('foundOneAdrs', JSON.stringify (tracker.matchedOneAdrs));
+    // localStorage.setItem('foundAddresses', JSON.stringify(tracker.matchedAddresses));
   },
 
   displaySearchResults: function () {
@@ -51,6 +61,7 @@ var tracker = {
       aTag.innerHTML = buildingAddress;
       tableData.appendChild(aTag);
       tableRow.appendChild (tableData);
+      tableData.addEventListener ('click', tracker.addToLocalStorage);
       var aTag4Charger = document.createElement('a');
       var tD = document.createElement('td');
       aTag4Charger.href = 'type.html';
