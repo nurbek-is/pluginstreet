@@ -1,4 +1,3 @@
-
 // Define function to create user model class
 function User(name, email) {
   this.name = name;

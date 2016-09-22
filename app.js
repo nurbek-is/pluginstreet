@@ -24,6 +24,8 @@ var tracker = {
   searchMatches: [],
   matchFound: false,
   clearText: document.getElementById('displayArea'),
+  matchedAddresses: [],
+  // matchedOneAdrs: null,
 
   getQueryDataNmatch: function (event) {
     event.preventDefault();
@@ -35,21 +37,36 @@ var tracker = {
       if (locations[i].city === this.searchWord) {
         console.log (locations[i].chargeType + ',' + locations[i].building + ', ' + locations[i].fullAddress);
         tracker.searchMatches.push(locations[i].building + ', ' + locations[i].fullAddress);
+        tracker.matchedOneAdrs = locations[i].fullAddress;
+        tracker.matchedAddresses.push(locations[i].fullAddress);
+        // localStorage.setItem('foundAddresses', JSON.stringify(tracker.matchedAddresses));
+        // localStorage.setItem('foundOneAdrs', JSON.stringify (tracker.matchedOneAdrs))
       };
     };
   },
+  addToLocalStorage: function () {
+    localStorage.setItem('foundOneAdrs', JSON.stringify (tracker.matchedOneAdrs));
+    // localStorage.setItem('foundAddresses', JSON.stringify(tracker.matchedAddresses));
+  },
 
   displaySearchResults: function () {
-    var full_list = '';
+    var buildingAddress = '';
     for (var i = 0; i < tracker.searchMatches.length; i++) {
-      full_list = tracker.searchMatches[i];
+      buildingAddress = tracker.searchMatches[i];
       var table = document.getElementById('displayArea');
       var tableRow = document.createElement('tr');
+      var aTag = document.createElement('a');
       var tableData = document.createElement('td');
-      tableData.innerHTML = full_list;
+      aTag.href = 'gmap.html';
+      aTag.innerHTML = buildingAddress;
+      tableData.appendChild(aTag);
       tableRow.appendChild (tableData);
+      tableData.addEventListener ('click', tracker.addToLocalStorage);
+      var aTag4Charger = document.createElement('a');
       var tD = document.createElement('td');
-      tD.innerHTML = locations[i].chargeType;
+      aTag4Charger.href = 'type.html';
+      aTag4Charger.innerHTML = locations[i].chargeType;
+      tD.appendChild(aTag4Charger);
       tableRow.appendChild (tD);
       table.appendChild(tableRow);
       tracker.matchFound = true;
@@ -68,7 +85,7 @@ var tracker = {
     tracker.searchMatches = [];
   },
   runAllMethods: function () {
-    tracker.clearData (event);
+    tracker.clearData ();
     tracker.getQueryDataNmatch (event);
     tracker.displaySearchResults ();
   },
