@@ -23,15 +23,22 @@ height: auto;*/
   list-style-type:none;
 }
 
+a:hover {
+  background-color: #42f4e5;
+}
+a {
+text-decoration: none;
+  }
+
 
 #search {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   color: #aaa;
   font-size: 16px;
   padding: 10px;
-  background-color: green;
+  background-color: #4265f4;
 }
 .formfield {
   margin: 10px;
@@ -55,6 +62,9 @@ height: auto;*/
   border: 1px solid #aaa;
   background: #fcfcfc;
   box-shadow:  15px 10px 15px #ebebeb inset;
+}
+#submit :hover {
+  background-color: red;
 }
 
 #mapbutton {
@@ -90,9 +100,11 @@ table, td {
     text-align: center;
 
 }
-
 .displaySearchResults {
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+#statementtext {
+color: black;
 }
