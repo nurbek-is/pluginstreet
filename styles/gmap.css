@@ -19,3 +19,20 @@ html, body {
         line-height: 30px;
         padding-left: 10px;
       }
+
+      #nav {
+        display: flex;
+        justify-content:  space-around;
+        background-color: #676791;
+        text-decoration: none;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        list-style-type:none;
+      }
+
+      a:hover {
+        background-color: #42f4e5;
+      }
+      a {
+      text-decoration: none;
+        }
