@@ -16,8 +16,11 @@ height: auto;*/
 #nav {
   display: flex;
   justify-content:  space-around;
-  background-color: grey;
+  background-color: white;
   text-decoration: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  list-style-type:none;
 }
 
 
