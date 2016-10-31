@@ -20,11 +20,21 @@
          <p id='username'> </p>
     </div>
 
-    <form id="personinfo">
-
-      <fieldset>
+    <fieldset id='sbStation' class="personinfo">
       <legend>
-        <span class="form-legend">1</span> Tell us about yourself
+      <span class="form-legend">1</span> Please enter a new charging station
+      </legend>
+      <textarea id='stationsText' placeholder="Enter a New Station here"></textarea>
+      <button id='submitBtn' class='btn' type="button" name="button" onclick="submitClick()">Submit the Station</button>
+
+    </fieldset>
+
+
+    <form id="personinfo" class="personinfo">
+      <fieldset>
+
+      <legend>
+        <span class="form-legend">2</span> Tell us about yourself
       </legend>
       <br>
       <label for="">First Name and Last Name</label>
@@ -33,7 +43,7 @@
       <label for="">E-mail</label>
       <input type="email" name="email" value="">
 
-      <legend> <span class="form-legend">2</span> Your favorite electric car</legend>
+      <legend> <span class="form-legend">3</span> The favorite electric car you drive</legend>
 
       <label for="">Tesla</label>
       <input type="checkbox" id='tesla' name="name" value="tesla"> <br>
@@ -54,7 +64,7 @@
         <option value='Twitter'>Twitter</option>
       </select>
 
-      <input type="submit" value="Sign up!">
+      <input type="submit" class='btn' value="Sign up!">
 
       </fieldset>
     </form>
@@ -66,8 +76,22 @@
       <a href="https://www.twitter.com/" target ="_blank"><img class = 'logos' src="images/twitter.png" alt="twitter" /></a>
 
     </footer>
-<script src="profile.js">
+    <script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAfB4eGEQnQacfXMseXG7HEiy97VKXbTuo",
+        authDomain: "pluginstreet.firebaseapp.com",
+        databaseURL: "https://pluginstreet.firebaseio.com",
+        storageBucket: "pluginstreet.appspot.com",
+        messagingSenderId: "732877200711"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+  <script src="profile.js"></script>
 
 </script>
+
   </body>
 </html>

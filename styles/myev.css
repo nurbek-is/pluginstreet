@@ -9,6 +9,23 @@
   display: flex;
   justify-content:space-around;
 }
+#sbStation {
+  max-width: 368px;
+  margin-left: 514px;
+  margin-bottom: 10px;
+}
+.btn {
+  background-color: #42b0f4;
+}
+#stationsText {
+  margin-left: 6px;
+  resize: none;
+  width: 350px;
+}
+#submitBtn {
+  margin-left: 240px;
+  margin-top: 8px;
+}
 
 #userNameDisplay {
 display: flex;

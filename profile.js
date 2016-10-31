@@ -1,3 +1,14 @@
+var text = document.getElementById('stationsText')
+var button = document.getElementById('submitBtn')
+
+
+function submitClick() {
+ var fireBaseRef = firebase.database().ref();
+ var messageText = text.value;
+ fireBaseRef.push().set(messageText);
+}
+
+
 // Define function to create user model class
 function User(name, email) {
   this.name = name;
