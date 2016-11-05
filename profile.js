@@ -8,7 +8,6 @@ function submitClick() {
  fireBaseRef.push().set(messageText);
 }
 
-
 // Define function to create user model class
 function User(name, email) {
   this.name = name;
