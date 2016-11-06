@@ -19,16 +19,18 @@
          <div id="icons3"> </div>
          <p id='username'> </p>
     </div>
-
+    <h1 id='addedAddress'></h1>
     <fieldset id='sbStation' class="personinfo">
       <legend>
       <span class="form-legend">1</span> Please enter a new charging station
       </legend>
-      <textarea id='stationsText' placeholder="Enter a New Station here"></textarea>
-      <button id='submitBtn' class='btn' type="button" name="button" onclick="submitClick()">Submit the Station</button>
 
+      <input type="text" id="address" placeholder="Enter a New Address here">
+      <input type="text" id="city" placeholder="Enter a New city here">
+      <input type="text" id="state" placeholder="Enter a New Station here">
+
+      <button type="button" id="button" onclick="addStation()">Submit</button>
     </fieldset>
-
 
     <form id="personinfo" class="personinfo">
       <fieldset>
