@@ -19,16 +19,26 @@
          <div id="icons3"> </div>
          <p id='username'> </p>
     </div>
+    <ul id='addedAddress'>
+    </ul>
 
     <fieldset id='sbStation' class="personinfo">
       <legend>
       <span class="form-legend">1</span> Please enter a new charging station
       </legend>
-      <textarea id='stationsText' placeholder="Enter a New Station here"></textarea>
-      <button id='submitBtn' class='btn' type="button" name="button" onclick="submitClick()">Submit the Station</button>
+      <label for="">Building/Location Name</label>
+      <input type="text" id="building" placeholder="Enter a building here"> </br>  
+      <label for="">Address</label>
+      <input type="text" id="address" placeholder="Enter a New Address here"> </br>
+      <label for="">City</label>
+      <input type="text" id="city" placeholder="Enter a New city here"></br>
+      <label for="">State</label>
+      <input type="text" id="state" placeholder="Enter a New Station here"></br>
+      <label for="">Zip Code</label>
+      <input type="text" id="zip" placeholder="Enter a Zip code here">
 
+      <button type="button" id="button" onclick="addStation()">Submit</button>
     </fieldset>
-
 
     <form id="personinfo" class="personinfo">
       <fieldset>
@@ -43,7 +53,7 @@
       <label for="">E-mail</label>
       <input type="email" name="email" value="">
 
-      <legend> <span class="form-legend">3</span> The favorite electric car you drive</legend>
+      <legend> <span class="form-legend">3</span> Your favorite electric car you drive</legend>
 
       <label for="">Tesla</label>
       <input type="checkbox" id='tesla' name="name" value="tesla"> <br>
