@@ -22,26 +22,26 @@
     <ul id='addedAddress'>
     </ul>
 
-    <fieldset id='sbStation' class="personinfo">
+    <fieldset id='sbStation'>
       <legend>
       <span class="form-legend">1</span> Please enter a new charging station
       </legend>
-      <label for="">Building/Location Name</label>
-      <input type="text" id="building" placeholder="Enter a building here"> </br>  
-      <label for="">Address</label>
-      <input type="text" id="address" placeholder="Enter a New Address here"> </br>
-      <label for="">City</label>
-      <input type="text" id="city" placeholder="Enter a New city here"></br>
-      <label for="">State</label>
-      <input type="text" id="state" placeholder="Enter a New Station here"></br>
-      <label for="">Zip Code</label>
-      <input type="text" id="zip" placeholder="Enter a Zip code here">
+      <label for="building">Building/Location Name</label>
+      <input class ='userInput' type="text" id="building" placeholder="Enter a building here"> </br>
+      <label for="address">Address</label>
+      <input class ='userInput' type="text" id="address" placeholder="Enter a New Address here"> </br>
+      <label for="city">City</label>
+      <input class ='userInput' type="text" id="city" placeholder="Enter a New city here"></br>
+      <label for="state">State</label>
+      <input class ='userInput' type="text" id="state" placeholder="Enter a New Station here"></br>
+      <label for="zip">Zip Code</label>
+      <input class ='userInput' type="text" id="zip" placeholder="Enter a Zip code here">
 
-      <button type="button" id="button" onclick="addStation()">Submit</button>
+      <button class='btn' type="button" id="button" onclick="addStation()">Submit</button>
     </fieldset>
 
     <form id="personinfo" class="personinfo">
-      <fieldset>
+      <fieldset class="personinfo">
 
       <legend>
         <span class="form-legend">2</span> Tell us about yourself
@@ -55,7 +55,7 @@
 
       <legend> <span class="form-legend">3</span> Your favorite electric car you drive</legend>
 
-      <label for="">Tesla</label>
+      <label for="checkbox">Tesla</label>
       <input type="checkbox" id='tesla' name="name" value="tesla"> <br>
 
       <label for="">Nissan Leaf</label>
@@ -64,9 +64,9 @@
       <label for="">BMW i3</label>
       <input type="checkbox" id='bmw' name="name" value="bmw"> <br>
 
-      <label for="">Where did you hear about us?</label>
-
-      <select class=" " name="">
+      <label for="source">Where did you hear about us?</label>
+      <br> <br> <br> <br>
+      <select class="source" name="">
         <optgroup label='Search Engine'>Search Engine</optgroup>
         <option value='Google'>Google</option>
         <option value='Bing'>Bing</option>
@@ -75,6 +75,7 @@
       </select>
 
       <input type="submit" class='btn' value="Sign up!">
+      <!-- <button class='btn' type="button">Sign up!</button> -->
 
       </fieldset>
     </form>
