@@ -55,8 +55,10 @@ var tracker = {
     };
   },
   addToLocalStorage: function () {
-    localStorage.setItem('foundAddresses', JSON.stringify(tracker.matchedAddresses));
+    // localStorage.setItem('foundAddresses', JSON.stringify(tracker.matchedAddresses));
+    localStorage.setItem('foundAddresses', JSON.stringify(tracker.searchMatches));
       // alert ('addresses are ' + localStorage.foundAddresses);
+      // alert (foundAddresses);
   },
   clearData: function() {
     var clearText = document.getElementById('displayArea');
