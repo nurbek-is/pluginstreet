@@ -17,7 +17,7 @@ var tracker = {
     for (var i = 0; i < locations.length; i++) {
       if (locations[i].city === this.searchWord) {
         console.log (locations[i].chargeType + ',' + locations[i].building + ', ' + locations[i].fullAddress);
-        tracker.searchMatches.push(locations[i].building + ', ' + locations[i].fullAddress);
+        tracker.searchMatches.push(locations[i].building + ', ' + locations[i].chargeType + ',' + locations[i].fullAddress);
         tracker.matchedOneAdrs = locations[i].fullAddress;
         tracker.matchedAddresses.push(locations[i].fullAddress);
       };
@@ -55,8 +55,10 @@ var tracker = {
     };
   },
   addToLocalStorage: function () {
-    localStorage.setItem('foundAddresses', JSON.stringify(tracker.matchedAddresses));
-      // alert ('addresses are ' + localStorage.foundAddresses);
+    // localStorage.setItem('foundAddresses', JSON.stringify(tracker.matchedAddresses));
+    localStorage.setItem('foundAddresses', JSON.stringify(tracker.searchMatches));
+    // alert ('addresses are ' + localStorage.foundAddresses);
+      // alert (foundAddresses);
   },
   clearData: function() {
     var clearText = document.getElementById('displayArea');
