@@ -8,10 +8,6 @@ function initMap() {
     center: {lat: 47.608013, lng: -122.335167}
   });
 
-  var contentString = '<p>Text me my buddy</p>';
-  var popUpWindow = new google.maps.InfoWindow({
-    content: contentString
-  });
 
   var geocoder = new google.maps.Geocoder();
   geocodeSeveralAdresses(geocoder, map);
@@ -19,10 +15,20 @@ function initMap() {
   /// this function PINS STATIONS ON THE MAP ////
 
   function geocodeSeveralAdresses(geocoder, resultsMap) {
+
     var addressesForCity = JSON.parse(localStorage.getItem('foundAddresses'));
+    // alert ('addresses are: ' + addressesForCity);
     for (var i = 0; i < addressesForCity.length; i++) {
+      alert ('iteration: ' + [i] + ' and ' + addressesForCity[i]);
+      var popUpWindow = new google.maps.InfoWindow({
+        content: addressesForCity[i]
+      })
+
       geocoder.geocode({'address': addressesForCity[i]}, function(results, status) {
         if (status === 'OK') {
+
+
+
           resultsMap.setCenter(results[0].geometry.location);
 
           var marker = new google.maps.Marker  ({
@@ -31,15 +37,17 @@ function initMap() {
             title: addressesForCity[i],
             position: results[0].geometry.location
           });
+
           marker.addListener('click', function (){
             popUpWindow.open(map, marker);
           });
+
         } else {
           alert('Geocode was not successful for the following reason: ' + status);
         }
       });
     }
-    addressesForCity = [];
+    // addressesForCity = [];
   }
 }
 
