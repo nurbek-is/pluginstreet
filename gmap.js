@@ -8,7 +8,6 @@ function initMap() {
     center: {lat: 47.608013, lng: -122.335167}
   });
 
-
   var geocoder = new google.maps.Geocoder();
   geocodeSeveralAdresses(geocoder, map);
 
@@ -17,17 +16,14 @@ function initMap() {
   function geocodeSeveralAdresses(geocoder, resultsMap) {
 
     var addressesForCity = JSON.parse(localStorage.getItem('foundAddresses'));
-    // alert ('addresses are: ' + addressesForCity);
     for (var i = 0; i < addressesForCity.length; i++) {
-      alert ('iteration: ' + [i] + ' and ' + addressesForCity[i]);
-      var popUpWindow = new google.maps.InfoWindow({
-        content: addressesForCity[i]
-      })
-
+      // console.log ('iteration: ' + [i] + ' and ' + addressesForCity[i]);
       geocoder.geocode({'address': addressesForCity[i]}, function(results, status) {
         if (status === 'OK') {
-
-
+          console.log(labelIndex);
+          var popUpWindow = new google.maps.InfoWindow({
+            content: addressesForCity[labelIndex]
+          })
 
           resultsMap.setCenter(results[0].geometry.location);
 
