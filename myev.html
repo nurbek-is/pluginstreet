@@ -38,11 +38,12 @@
       <input class ='userInput' type="text" id="zip" placeholder="Enter a Zip code here">
 
 
-      <progress id='uploader' value="0" max="100">50%</progress>
-      <input id='fileButton' type="file" value="upload">
 
       <button class='btn' type="button" id="button" onclick="addStation()">Submit</button>
     </fieldset>
+
+    <progress id='uploader' value="0" max="100">50%</progress>
+    <input id='fileButton' type="file" value="upload">
 
     <form id="personinfo" class="personinfo">
       <fieldset class="personinfo">
@@ -102,6 +103,7 @@
         messagingSenderId: "732877200711"
       };
       firebase.initializeApp(config);
+       var storage = firebase.storage();
     </script>
 
   <script src="myev.js"></script>
