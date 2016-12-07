@@ -22,7 +22,7 @@
     <ul id='addedAddress'>
     </ul>
 
-    <fieldset id='sbStation'>
+    <fieldset id='addedStation'>
       <legend>
       <span class="form-legend">1</span> Please enter a new charging station
       </legend>
@@ -38,25 +38,28 @@
       <input class ='userInput' type="text" id="zip" placeholder="Enter a Zip code here">
 
 
+      <progress id='uploader' value="0" max="100">50%</progress>
+      <input id='fileButton' type="file" value="upload">
 
       <button class='btn' type="button" id="button" onclick="addStation()">Submit</button>
-    </fieldset>
+      </fieldset>
 
-    <progress id='uploader' value="0" max="100">50%</progress>
-    <input id='fileButton' type="file" value="upload">
 
     <form id="personinfo" class="personinfo">
-      <fieldset class="personinfo">
+      <fieldset class="personinfo"> -->
 
       <legend>
-        <span class="form-legend">2</span> Tell us about yourself
+        <span class="form-legend">2</span> Log in or Sign up to learn about our newest stations
       </legend>
       <br>
-      <label for="">First Name and Last Name</label>
+      <label for="">Name</label>
       <input type="text" name="fullName" value="" /> <br>
 
       <label for="">E-mail</label>
       <input type="email" name="email" value="">
+
+      <label for="">Password</label>
+      <input type="password" name="password" value="">
 
       <legend> <span class="form-legend">3</span> Your favorite electric car you drive</legend>
 
@@ -72,15 +75,22 @@
       <label for="source">Where did you hear about us?</label>
       <br> <br> <br> <br>
       <select class="source" name="">
-        <optgroup label='Search Engine'>Search Engine</optgroup>
-        <option value='Google'>Google</option>
-        <option value='Bing'>Bing</option>
-        <option value='Facebook'>Facebook</option>
-        <option value='Twitter'>Twitter</option>
+          <optgroup label='Search Engine'>Search Engine</optgroup>
+          <option value='Google'>Google</option>
+          <option value='Bing'>Bing</option>
+          <option value='Facebook'>Facebook</option>
+          <option value='Twitter'>Twitter</option>
       </select>
+      <div id='signlogbtn'>
+        <button class='btn' type="button" name="button">Log In!</button>
+        <button class='btn' type="button" name="button">Sign up</button>
+        <button class='btn' id='logout' type="button" name="button">Log Out!</button>
+      <!-- <input type="submit" class='btn' value="Log In!">
+      <input id='logout' type="submit" class='btn' value="Log Out">
+      <input type="submit" class='btn' value="Sign up"> -->
 
-      <input type="submit" class='btn' value="Sign up!">
-      <!-- <button class='btn' type="button">Sign up!</button> -->
+      </div>
+
 
       </fieldset>
     </form>
@@ -103,7 +113,7 @@
         messagingSenderId: "732877200711"
       };
       firebase.initializeApp(config);
-       var storage = firebase.storage();
+      var storage = firebase.storage();
     </script>
 
   <script src="myev.js"></script>

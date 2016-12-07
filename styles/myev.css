@@ -1,22 +1,19 @@
-#nav {
-  display: flex;
-  justify-content:  space-around;
-  background-color: grey;
-  text-decoration: none;
-}
 
 #personinfo {
   display: flex;
   justify-content:space-around;
 }
 
-#sbStation {
+#addedStation {
   max-width: 350px;
   margin-left: 523px;
   margin-bottom: 10px;
 }
 .btn {
   background-color: #42b0f4 !important;
+  margin: 20px;
+  /*position: relative;*/
+  margin-right: 40px;
 }
 
 #button {
@@ -25,13 +22,11 @@
 
 }
 
-
 label {
     width:180px;
     clear:left;
     text-align:right;
     padding-right:10px;
-
 }
 
 input, label {
@@ -48,6 +43,7 @@ align-items: center;
 font-size: 20px;
 font-family: sans-serif;
 }
+
 input {
   margin: 13px
 }
@@ -99,4 +95,12 @@ text-decoration: none;
   appearance:none;
   width: 50%;
   margin-bottom: 10px;
+}
+#signlogbtn {
+  /*position: relative;
+  margin-left: 100px;*/
+  display: flex;
+  flex-direction: row;
+  align-content:space-around;
+
 }
