@@ -47,49 +47,99 @@ function complete () {
 );
 
 });
+// get Elements
 
+const txtEmail = document.getElementById('txtEmail');
+const txtPassword = document.getElementById('txtPassword');
+const btnLogin = document.getElementById('logIn');
+const btnSignUp = document.getElementById('signUp');
+const btnLogOut = document.getElementById('logOut');
 
-function User(name, email) {
-  this.name = name;
-  this.email = email;
-  this.tesla = tesla.checked;
-  this.leaf = leaf.checked;
-  this.bmw = bmw.checked;
-};
+btnLogin.addEventListener ('click', e =>{
+  // Get Email and pass
+  const email = txtEmail.value;
+  const pass = txtPassword.value;
+  const auth = firebase.auth();
+  // Sign in
+  const promise = auth.signInWithEmailAndPassword(email, pass);
+  promise.catch (e => console.log (e.message));
+  });
+// })
+// Add sign up event
+btnSignUp.addEventListener('click', e => {
+  // Get Email and pass
+  // TODO: Check 4 Real Emails
+  const email = txtEmail.value;
+  const pass = txtPassword.value;
+  const auth = firebase.auth();
+  // Sign in
+  const promise = auth.createUserWithEmailAndPassword(email, pass);
+  promise
+        .catch (e => console.log (e.message));
+});
 
-function getUserData(event) {
-  // Avoid page reloading on form submission
-  event.preventDefault();
-  // Get values from the form
-  var fullName = event.target.fullName.value;
-  var email = event.target.fullName.email;
-  // Create new instance of user model
-  var newUser = new User(fullName, email);
-  // Set data to local storage
-  localStorage.setItem('userProfile', JSON.stringify(newUser));
-}
-var personInfo = document.getElementById('personinfo')
-personInfo.addEventListener('submit', getUserData);
+//this sign out current authenticated user
+btnLogOut.addEventListener('click', e => {
+  firebase.auth().signOut();
+});
+
+// Add a realtime listener
+firebase.auth().onAuthStateChanged(firebaseUser => {
+  if (firebaseUser) {
+    console.log (firebaseUser);
+    $("#logOut").show();
+  } else {
+    console.log ('not logged in');
+    $("#logOut").hide();
+  }
+});
+var e = document.getElementById("chTypes");
+alert(e);
+var strUser = e.options[e.selectedIndex].text;
+alert(strUser);
+
+// function User(name, email) {
+//   this.name = name;
+//   this.email = email;
+//   this.tesla = tesla.checked;
+//   this.leaf = leaf.checked;
+//   this.bmw = bmw.checked;
+// };
+
+// function getUserData(event) {
+//   // Avoid page reloading on form submission
+//   event.preventDefault();
+//   // Get values from the form
+//   var fullName = event.target.fullName.value;
+//   var email = event.target.fullName.email;
+//   // Create new instance of user model
+//   var newUser = new User(fullName, email);
+//   // Set data to local storage
+//   localStorage.setItem('userProfile', JSON.stringify(newUser));
+// }
+// var personInfo = document.getElementById('personinfo')
+// personInfo.addEventListener('submit', getUserData);
+
 
 // This function will store your name and your selection of car types in localStorage and display on right top corner
-function getUserName () {
-  if (localStorage.userProfile) {
-    console.log (localStorage.userProfile)
-    var getUserNameData = JSON.parse(localStorage.getItem('userProfile'));
-    console.log (getUserNameData);
-    console.log (getUserNameData.name);
-    var firstLetterName = getUserNameData.name.charAt(0).toUpperCase ();
-    var restLetterName = getUserNameData.name.slice(1);
-    document.getElementById('username').innerHTML = 'Hi ' + firstLetterName + restLetterName + "!";
-    if (getUserNameData.tesla === true) {
-      document.getElementById('icons').innerHTML = '<a href="https://www.tesla.com/" target = "_blank"><img src="images/tesla.png"/></a>'
-    }
-    if (getUserNameData.leaf === true) {
-      document.getElementById('icons2').innerHTML = '<a href="http://www.nissanusa.com/leaf" target = "_blank"><img src="images/nissan.jpg"/></a>'
-    }
-    if (getUserNameData.bmw === true) {
-      document.getElementById('icons3').innerHTML = '<a href="https://www.bmwusa.com/i3‎" target = "_blank"><img src="images/bmw.jpg"/></a>'
-    }
-  }
-};
-getUserName ();
+// function getUserName () {
+//   if (localStorage.userProfile) {
+//     console.log (localStorage.userProfile)
+//     var getUserNameData = JSON.parse(localStorage.getItem('userProfile'));
+//     console.log (getUserNameData);
+//     console.log (getUserNameData.name);
+//     var firstLetterName = getUserNameData.name.charAt(0).toUpperCase ();
+//     var restLetterName = getUserNameData.name.slice(1);
+//     document.getElementById('username').innerHTML = 'Hi ' + firstLetterName + restLetterName + "!";
+//     if (getUserNameData.tesla === true) {
+//       document.getElementById('icons').innerHTML = '<a href="https://www.tesla.com/" target = "_blank"><img src="images/tesla.png"/></a>'
+//     }
+//     if (getUserNameData.leaf === true) {
+//       document.getElementById('icons2').innerHTML = '<a href="http://www.nissanusa.com/leaf" target = "_blank"><img src="images/nissan.jpg"/></a>'
+//     }
+//     if (getUserNameData.bmw === true) {
+//       document.getElementById('icons3').innerHTML = '<a href="https://www.bmwusa.com/i3‎" target = "_blank"><img src="images/bmw.jpg"/></a>'
+//     }
+//   }
+// };
+// getUserName ();
