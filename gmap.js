@@ -21,7 +21,6 @@ function geocodeSearchButton(geocoder, resultsMap) {
       resultsMap.setCenter(results[0].geometry.location);
         var marker = new google.maps.Marker  ({
           map: resultsMap,
-          title: "Click  for more details";
           position: results[0].geometry.location
         });
     } else {
