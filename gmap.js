@@ -7,45 +7,45 @@ function initMap() {
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     center: {lat: 47.608013, lng: -122.335167}
   });
-
   var geocoder = new google.maps.Geocoder();
   geocodeSeveralAdresses(geocoder, map);
 
-  /// this function PINS STATIONS ON THE MAP ////
+  // document.getElementById('submit').addEventListener('click', function() {
+  //   geocodeSearchButton(geocoder, map);
+  // });
+}
 
-  function geocodeSeveralAdresses(geocoder, resultsMap) {
 
-    var addressesForCity = JSON.parse(localStorage.getItem('foundAddresses'));
-    for (var i = 0; i < addressesForCity.length; i++) {
-      // console.log ('iteration: ' + [i] + ' and ' + addressesForCity[i]);
-      geocoder.geocode({'address': addressesForCity[i]}, function(results, status) {
-        if (status === 'OK') {
-          console.log(labelIndex);
-          var popUpWindow = new google.maps.InfoWindow({
-            content: addressesForCity[labelIndex]
-          })
 
-          resultsMap.setCenter(results[0].geometry.location);
+/// this function PINS STATIONS ON THE MAP ////
 
-          var marker = new google.maps.Marker  ({
-            label: labels[labelIndex++ % labels.length],
-            map: resultsMap,
-            title: addressesForCity[i],
-            position: results[0].geometry.location
-          });
-
-          marker.addListener('click', function (){
-            popUpWindow.open(map, marker);
-          });
-
-        } else {
-          alert('Geocode was not successful for the following reason: ' + status);
-        }
-      });
-    }
-    // addressesForCity = [];
+function geocodeSeveralAdresses(geocoder, resultsMap) {
+  var addressesForCity = JSON.parse(localStorage.getItem('foundAddresses'));
+alert ('addressesForCity is ' +  addressesForCity);
+  for (var i = 0; i < addressesForCity.length; i++) {
+    geocoder.geocode({'address': addressesForCity[i]}, function(results, status) {
+      if (status === 'OK') {
+        console.log('label index is ' + labelIndex);
+        var popUpWindow = new google.maps.InfoWindow({
+          content: addressesForCity[labelIndex]
+        })
+        resultsMap.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker  ({
+          label: labels[labelIndex++ % labels.length],
+          map: resultsMap,
+          // title: addressesForCity[i];
+          position: results[0].geometry.location
+        });
+        marker.addListener('click', function () {
+          popUpWindow.open(map, marker);
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
   }
 }
+
 
 
 // THis is General Search Function in Map, IT DOESN'T FIND ANY STATIONS//////
