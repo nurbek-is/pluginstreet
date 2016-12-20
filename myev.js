@@ -9,7 +9,6 @@ function addStation(){
   var state = document.getElementById('state').value;
   var zip = document.getElementById('zip').value;
   var note = document.getElementById('note').value;
-  alert (note);
   var newStationEntry = TheDatabase.ref().child('stations').push().key;
     TheDatabase.ref('stations/'+newStationEntry+'/building').set(building);
     TheDatabase.ref('stations/'+newStationEntry+'/address').set(address);
@@ -19,6 +18,7 @@ function addStation(){
     TheDatabase.ref('stations/'+newStationEntry+'/zip').set(zip);
     TheDatabase.ref('stations/'+newStationEntry+'/note').set(note);
 }
+// adding station images to FireBase
 
 var storage = firebase.storage().ref();
 var uploader = document.getElementById('uploader');
@@ -30,14 +30,10 @@ fileButton.addEventListener('change', function (e){
   var file = e.target.files[0];
 // create a storage ref
   var storageRef = firebase.storage().ref('AddedStations/' + file.name);
-
 //Upload file
   var task = storageRef.put(file);
-
-
 //Update progress bar
   task.on('state_changed',
-
     function progress (snapshot) {
       var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
       uploader.value = percentage;
@@ -45,16 +41,10 @@ fileButton.addEventListener('change', function (e){
 function error (err) {
   alert("Error: ")
   alert(err);
-
 },
-function complete () {
-  //uploader.value = 100;
-}
-);
-
+function complete () {  } );
 });
 // get Elements
-
 const txtEmail = document.getElementById('txtEmail');
 const txtPassword = document.getElementById('txtPassword');
 const btnLogin = document.getElementById('logIn');
@@ -100,8 +90,11 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
   }
 });
 
-var note = document.getElementById('note').value;
-alert (note);
+ 
+  const txtName = document.getElementById('txtName').value;
+  alert(txtName);
+
+
 
 // function handleSelect() {
 
