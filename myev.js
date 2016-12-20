@@ -1,17 +1,23 @@
 var TheDatabase = firebase.database();
 function addStation(){
   var building = document.getElementById('building').value;
+  var chargeOptions = document.getElementById("chTypes");
+  var chargeTypes = chargeOptions.options[chargeOptions.selectedIndex].text;
+
   var address = document.getElementById('address').value;
   var city = document.getElementById('city').value;
   var state = document.getElementById('state').value;
   var zip = document.getElementById('zip').value;
-
+  var note = document.getElementById('note').value;
+  alert (note);
   var newStationEntry = TheDatabase.ref().child('stations').push().key;
     TheDatabase.ref('stations/'+newStationEntry+'/building').set(building);
     TheDatabase.ref('stations/'+newStationEntry+'/address').set(address);
+    TheDatabase.ref('stations/'+newStationEntry+'/chargeTypes').set(chargeTypes);
     TheDatabase.ref('stations/'+newStationEntry+'/city').set(city);
     TheDatabase.ref('stations/'+newStationEntry+'/state').set(state);
     TheDatabase.ref('stations/'+newStationEntry+'/zip').set(zip);
+    TheDatabase.ref('stations/'+newStationEntry+'/note').set(note);
 }
 
 var storage = firebase.storage().ref();
@@ -93,11 +99,16 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
     $("#logOut").hide();
   }
 });
-var e = document.getElementById("chTypes");
-alert(e);
-var strUser = e.options[e.selectedIndex].text;
-alert(strUser);
 
+var note = document.getElementById('note').value;
+alert (note);
+
+// function handleSelect() {
+
+// var strUser = topForm.chOptions.value   //another alternative.
+
+// }
+// handleSelect();
 // function User(name, email) {
 //   this.name = name;
 //   this.email = email;

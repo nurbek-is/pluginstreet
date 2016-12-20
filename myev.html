@@ -22,6 +22,7 @@
     <ul id='addedAddress'>
     </ul>
 
+    <!-- <form name='topForm'> -->
     <fieldset id='addedStation'>
       <legend>
       <span class="form-legend">1</span> Please enter a new charging station
@@ -29,14 +30,16 @@
       <label for="building">Building/Location Name</label>
       <input class ='userInput' type="text" id="building" placeholder="Enter a building here"> </br>
 
-      <label for="">What kind of Charing technology/type?</label> <br> <br>
-
-      <select id ='chTypes' class=" " name="">
-        <optgroup label='Search Engine'>Search Engine</optgroup>
-        <option value='Google'>J1772</option>
-        <option value='Bing'>Bing</option>
-        <option value='Facebook'>Facebook</option>
-        <option value='Twitter'>Twitter</option>
+      <label for="">What kind of Charging technology/type?</label> <br> <br>
+<!-- onchange="handleSelect()" -->
+      <select name="chOptions" id ='chTypes' class=" "  >
+        <option value='J1772'>J1772(AVCON)</option>
+        <option value='Large Paddle'>Large Paddle Inductive</option>
+        <option value='Small Paddle'>Small Paddle Inductive</option>
+        <option value='Nema'>Nema 5</option>
+        <option value='Nema14'>Nema 14-50</option>
+        <option value='Nema'>SAE J1772-2010</option>
+        <option value='Nema'>CHAdeMO</option>
       </select>
 
       <label for="address">Address</label>
@@ -47,15 +50,15 @@
       <input class ='userInput' type="text" id="state" placeholder="Enter a New Station here"></br>
       <label for="zip">Zip Code</label>
       <input class ='userInput' type="text" id="zip" placeholder="Enter a Zip code here">
-      <label for="zip">Add a Note if any</label>
-      <input class ='userInput' type="text" id="zip" placeholder="Enter a Note here">
+      <label for="note">Add a Note/Instruction if any</label>
+      <input class ='userInput' type="text" id="note" placeholder="Enter a Note here">
 
       <progress id='uploader' value="0" max="100">50%</progress>
       <input id='fileButton' type="file" value="upload">
 
       <button class='btn' type="button" id="SbmtButton" onclick="addStation()">Submit</button>
       </fieldset>
-
+    </form>
 
     <form id="personinfo" class="personinfo">
       <fieldset class="personinfo">
