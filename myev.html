@@ -22,12 +22,26 @@
     <ul id='addedAddress'>
     </ul>
 
+    <!-- <form name='topForm'> -->
     <fieldset id='addedStation'>
       <legend>
       <span class="form-legend">1</span> Please enter a new charging station
       </legend>
       <label for="building">Building/Location Name</label>
       <input class ='userInput' type="text" id="building" placeholder="Enter a building here"> </br>
+
+      <label for="">What kind of Charging technology/type?</label> <br> <br>
+<!-- onchange="handleSelect()" -->
+      <select name="chOptions" id ='chTypes' class=" "  >
+        <option value='J1772'>J1772(AVCON)</option>
+        <option value='Large Paddle'>Large Paddle Inductive</option>
+        <option value='Small Paddle'>Small Paddle Inductive</option>
+        <option value='Nema'>Nema 5</option>
+        <option value='Nema14'>Nema 14-50</option>
+        <option value='Nema'>SAE J1772-2010</option>
+        <option value='Nema'>CHAdeMO</option>
+      </select>
+
       <label for="address">Address</label>
       <input class ='userInput' type="text" id="address" placeholder="Enter a New Address here"> </br>
       <label for="city">City</label>
@@ -36,13 +50,15 @@
       <input class ='userInput' type="text" id="state" placeholder="Enter a New Station here"></br>
       <label for="zip">Zip Code</label>
       <input class ='userInput' type="text" id="zip" placeholder="Enter a Zip code here">
+      <label for="note">Add a Note/Instruction if any</label>
+      <input class ='userInput' type="text" id="note" placeholder="Enter a Note here">
 
       <progress id='uploader' value="0" max="100">50%</progress>
       <input id='fileButton' type="file" value="upload">
 
       <button class='btn' type="button" id="SbmtButton" onclick="addStation()">Submit</button>
       </fieldset>
-
+    </form>
 
     <form id="personinfo" class="personinfo">
       <fieldset class="personinfo">
@@ -52,13 +68,13 @@
       </legend>
       <br>
       <label for="">Name</label>
-      <input type="text" name="fullName" value="" /> <br>
+      <input id = "txtName" name="fullName" value="" /> <br>
 
       <label for="">E-mail</label>
-      <input type="email" name="email" value="">
+      <input id = 'txtEmail' type="email" name="email" value="">
 
       <label for="">Password</label>
-      <input type="password" name="password" value="">
+      <input id = 'txtPassword' type="password" name="password" value="">
 
       <br><br><br><br><br><br>
       <legend id='favCar'>
@@ -78,9 +94,9 @@
 
       <br> <br><br>
       <div id='signlogbtn'>
-        <button class='btn' type="button" name="button">Log In!</button>
-        <button class='btn' type="button" name="button">Sign up</button>
-        <button class='btn' id='logout' type="button" name="button">Log Out!</button>
+        <button id='logIn' class='btn' type="button" name="button">Log In!</button>
+        <button id='signUp' class='btn' type="button" name="button">Sign up</button>
+        <button id='logOut' class='btn' type="button" name="button">Log Out!</button>
       </div>
 
 
