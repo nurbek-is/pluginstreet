@@ -1,4 +1,12 @@
 /* Navigation Style */
+.vr {
+    width:2px;
+    background-color:grey;
+    position:absolute;
+    top:120px;
+    bottom:0;
+    left:320px;
+}
 
 #nav {
   display: flex;
@@ -44,7 +52,7 @@ text-decoration: none;
 }
 .userInput {
   height: 15px;
-  width: 150px;*/
+  width: 150px;
 }
 
 #uploader {
@@ -52,9 +60,8 @@ text-decoration: none;
   appearance:none;
   width: 50%;
   margin-bottom: 10px;
-  margin-top: 8px;
+  margin-top: 25px;
 }
-
 
 /* Log In Sign Up style  */
 
@@ -84,6 +91,15 @@ label {
 input, label {
     float:left;
     margin-top: 13px;
+}
+#carTypesSelect {
+  margin-left: 190px;
+}
+#chOptions {
+  margin-top: 13px;
+}
+#prsUploadBtn {
+  margin-left: 140px;
 }
 
 .form-legend {

@@ -1,7 +1,7 @@
 var TheDatabase = firebase.database();
 function addStation(){
   var building = document.getElementById('building').value;
-  var chargeOptions = document.getElementById("chTypes");
+  var chargeOptions = document.getElementById("chOptions");
   var chargeTypes = chargeOptions.options[chargeOptions.selectedIndex].text;
 
   var address = document.getElementById('address').value;
@@ -22,7 +22,7 @@ function addStation(){
 
 var storage = firebase.storage().ref();
 var uploader = document.getElementById('uploader');
-var fileButton = document.getElementById ('fileButton');
+var fileButton = document.getElementById ('prsUploadBtn');
 
 
 fileButton.addEventListener('change', function (e){
@@ -44,6 +44,8 @@ function error (err) {
 },
 function complete () {  } );
 });
+
+////////***  Signing up New Users Section ***//////////////
 // get Elements
 const txtEmail = document.getElementById('txtEmail');
 const txtPassword = document.getElementById('txtPassword');
@@ -90,16 +92,20 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
   }
 });
 
- 
-  const txtName = document.getElementById('txtName').value;
-  alert(txtName);
+//  var userEmail = personinfo.txtEmail.value;
+//  alert(userEmail);
+//
+// var carName = personinfo.carNameTypesSelect.value;
+// var userInfo = TheDatabase.ref().child('NewUsers').push().key;
+//   TheDatabase.ref('NewUsers/'+userInfo+'/carName').set(carName);
+//   TheDatabase.ref('NewUsers/'+userInfo+'/userEmail').set(userEmail);
 
-
-
+//
 // function handleSelect() {
-
-// var strUser = topForm.chOptions.value   //another alternative.
-
+//
+//   var userEmail = personinfo.txtEmail.value;
+//   alert(userEmail);
+//
 // }
 // handleSelect();
 // function User(name, email) {
