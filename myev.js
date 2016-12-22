@@ -1,15 +1,18 @@
 var TheDatabase = firebase.database();
 function addStation(){
+  var txtName = document.getElementById('txtName').value;
+  var email = document.getElementById('email').value;
   var building = document.getElementById('building').value;
   var chargeOptions = document.getElementById("chTypes");
   var chargeTypes = chargeOptions.options[chargeOptions.selectedIndex].text;
-
   var address = document.getElementById('address').value;
   var city = document.getElementById('city').value;
   var state = document.getElementById('state').value;
   var zip = document.getElementById('zip').value;
   var note = document.getElementById('note').value;
   var newStationEntry = TheDatabase.ref().child('stations').push().key;
+    TheDatabase.ref('stations/'+newStationEntry+'/txtName').set(txtName);
+    TheDatabase.ref('stations/'+newStationEntry+'/email').set(email);
     TheDatabase.ref('stations/'+newStationEntry+'/building').set(building);
     TheDatabase.ref('stations/'+newStationEntry+'/address').set(address);
     TheDatabase.ref('stations/'+newStationEntry+'/chargeTypes').set(chargeTypes);
@@ -42,8 +45,11 @@ function error (err) {
   alert("Error: ")
   alert(err);
 },
-function complete () {  } );
+function complete () { } );
 });
+
+////////***  Signing up New Users Section ***//////////////
+
 // get Elements
 const txtEmail = document.getElementById('txtEmail');
 const txtPassword = document.getElementById('txtPassword');
@@ -56,11 +62,11 @@ btnLogin.addEventListener ('click', e =>{
   const email = txtEmail.value;
   const pass = txtPassword.value;
   const auth = firebase.auth();
+
   // Sign in
   const promise = auth.signInWithEmailAndPassword(email, pass);
   promise.catch (e => console.log (e.message));
   });
-// })
 // Add sign up event
 btnSignUp.addEventListener('click', e => {
   // Get Email and pass
@@ -72,6 +78,7 @@ btnSignUp.addEventListener('click', e => {
   const promise = auth.createUserWithEmailAndPassword(email, pass);
   promise
         .catch (e => console.log (e.message));
+        handleSelectCars();
 });
 
 //this sign out current authenticated user
@@ -90,17 +97,15 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
   }
 });
 
- 
-  const txtName = document.getElementById('txtName').value;
-  alert(txtName);
+function handleSelectCars() {
+  var userEmail = personinfo.txtEmail.value;
+ var carName = personinfo.carNameTypesSelect.value;
+ alert(carName);
+ var userInfo = TheDatabase.ref().child('NewUsers').push().key;
+ TheDatabase.ref('NewUsers/'+userInfo+'/carName').set(carName);
+ TheDatabase.ref('NewUsers/'+userInfo+'/userEmail').set(userEmail);
+}
 
-
-
-// function handleSelect() {
-
-// var strUser = topForm.chOptions.value   //another alternative.
-
-// }
 // handleSelect();
 // function User(name, email) {
 //   this.name = name;

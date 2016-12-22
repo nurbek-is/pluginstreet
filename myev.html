@@ -12,7 +12,7 @@
       <li><a href="map.html">Map Database Search</a></li>
       <li><a href="myev.html">MyEV</a></li>
     </nav>
-
+    <div class="vr">&nbsp;</div>
     <div id="userNameDisplay">
          <div id="icons"> </div>
          <div id="icons2"> </div>
@@ -27,8 +27,13 @@
       <legend>
       <span class="form-legend">1</span> Please enter a new charging station
       </legend>
+      <label for="">Your Name(required)</label>
+      <input class ='userInput' id = "txtName" name="fullName" value="" /> <br>
+      <label for="">Your Email(required)</label>
+      <input class ='userInput' id = "email" name="Email" value="" /> <br>
+
       <label for="building">Building/Location Name</label>
-      <input class ='userInput' type="text" id="building" placeholder="Enter a building here"> </br>
+      <input class ='userInput' type="text" id="building" > </br>
 
       <label for="">What kind of Charging technology/type?</label> <br> <br>
 <!-- onchange="handleSelect()" -->
@@ -43,15 +48,15 @@
       </select>
 
       <label for="address">Address</label>
-      <input class ='userInput' type="text" id="address" placeholder="Enter a New Address here"> </br>
+      <input class ='userInput' type="text" id="address"> </br>
       <label for="city">City</label>
-      <input class ='userInput' type="text" id="city" placeholder="Enter a New city here"></br>
+      <input class ='userInput' type="text" id="city"></br>
       <label for="state">State</label>
-      <input class ='userInput' type="text" id="state" placeholder="Enter a New Station here"></br>
+      <input class ='userInput' type="text" id="state"></br>
       <label for="zip">Zip Code</label>
-      <input class ='userInput' type="text" id="zip" placeholder="Enter a Zip code here">
+      <input class ='userInput' type="text" id="zip">
       <label for="note">Add a Note/Instruction if any</label>
-      <input class ='userInput' type="text" id="note" placeholder="Enter a Note here">
+      <input class ='userInput' type="text" id="note">
 
       <progress id='uploader' value="0" max="100">50%</progress>
       <input id='fileButton' type="file" value="upload">
@@ -67,8 +72,6 @@
         <span class="form-legend">2</span> Log in or Sign up to learn about our newest stations
       </legend>
       <br>
-      <label for="">Name</label>
-      <input id = "txtName" name="fullName" value="" /> <br>
 
       <label for="">E-mail</label>
       <input id = 'txtEmail' type="email" name="email" value="">
@@ -81,15 +84,19 @@
         <span class="form-legend">3</span> Your favorite electric car you drive
       </legend>
 
-      <label for="checkbox">Tesla</label>
-      <input type="checkbox" id='tesla' name="name" value="tesla">
 
-      <label for="">Nissan Leaf</label>
-      <input type="checkbox" id='leaf'  name="name" value="leaf">
-
-      <label for="">BMW i3</label>
-      <input type="checkbox" id='bmw' name="name" value="bmw">
-
+      <select id="carTypesSelect" name="carNameTypesSelect">
+          <option id='teslaS'>Tesla Model S </option>
+          <option id='teslaX'>Tesla Model X </option>
+          <option id='leaf'>Nissan Leaf </option>
+          <option id='bmw3'>BMW i3 </option>
+          <option id='bmw8'>BMW i8 </option>
+          <option id='chevy'>Chevy Bolt </option>
+          <option id='fiat'>FIAT 500e </option>
+          <option id='ford'>Ford Focus Electric </option>
+          <option id='vw'>Volkswagen e-Golf </option>
+          <option id='audi'>Audi e-tron</option>
+      </select>
       <br> <br> <br> <br>
 
       <br> <br><br>
