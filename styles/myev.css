@@ -55,7 +55,7 @@ text-decoration: none;
 }
 .userInput {
   height: 15px;
-  width: 150px;*/
+  width: 150px;
 }
 
 #uploader {
@@ -64,6 +64,9 @@ text-decoration: none;
   width: 50%;
   margin-bottom: 10px;
   margin-top: 8px;
+}
+#chooseImg4upld {
+  margin-left: 140px;
 }
 
 
@@ -82,7 +85,6 @@ text-decoration: none;
 #SbmtButton {
   margin-left: 240px  !important;
   margin-top: 8px  !important;
-
 }
 
 label {
@@ -114,6 +116,10 @@ input, label {
   flex-direction: row;
   align-content:space-around;
 }
+#carTypesSelect {
+  margin-left: 190px;
+}
+
 
 /*FOOTER*/
 #icons {

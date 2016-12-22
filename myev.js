@@ -25,10 +25,10 @@ function addStation(){
 
 var storage = firebase.storage().ref();
 var uploader = document.getElementById('uploader');
-var fileButton = document.getElementById ('fileButton');
+var chooseImg = document.getElementById ('chooseImg4upld');
 
 
-fileButton.addEventListener('change', function (e){
+chooseImg.addEventListener('change', function (e){
   //get file
   var file = e.target.files[0];
 // create a storage ref
