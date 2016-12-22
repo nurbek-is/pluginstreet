@@ -16,6 +16,14 @@ a:hover {
 a {
 text-decoration: none;
   }
+  .vr {
+    width:2px;
+    background-color:grey;
+    position:absolute;
+    top:120px;
+    bottom:0;
+    left:320px;
+}
 
 /* Displaying Name and Logo Style */
 
@@ -42,9 +50,12 @@ text-decoration: none;
   margin-left: 467px;
   margin-bottom: 10px;
 }
+#chTypes {
+  margin-top: 13px;
+}
 .userInput {
   height: 15px;
-  width: 150px;*/
+  width: 150px;
 }
 
 #uploader {
@@ -53,6 +64,9 @@ text-decoration: none;
   width: 50%;
   margin-bottom: 10px;
   margin-top: 8px;
+}
+#chooseImg4upld {
+  margin-left: 140px;
 }
 
 
@@ -71,7 +85,6 @@ text-decoration: none;
 #SbmtButton {
   margin-left: 240px  !important;
   margin-top: 8px  !important;
-
 }
 
 label {
@@ -103,6 +116,10 @@ input, label {
   flex-direction: row;
   align-content:space-around;
 }
+#carTypesSelect {
+  margin-left: 190px;
+}
+
 
 /*FOOTER*/
 #icons {
