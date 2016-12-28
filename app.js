@@ -1,6 +1,7 @@
 
 var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var labelIndex = 0;
+var addressesForCity = [];
 // Object literal
 var tracker = {
   getForm: document.getElementById('search'),
@@ -59,23 +60,23 @@ var tracker = {
     };
   },
   addToLocalStorage: function () {
-     localStorage.setItem('foundAddresses', JSON.stringify(tracker.matchedAddresses));
+    //  localStorage.setItem('foundAddresses', JSON.stringify(tracker.matchedAddresses));
      localStorage.setItem('foundAddresses', JSON.stringify(tracker.searchMatches));
     alert ('addresses are ' + localStorage.foundAddresses);
   },
-  clearData: function() {
-    var clearText = document.getElementById('displayArea');
-    clearText.innerHTML = '';
-    tracker.searchMatches = [];
-  },
+  // clearData: function() {
+  //   var clearText = document.getElementById('displayArea');
+  //   clearText.innerHTML = '';
+  //   tracker.searchMatches = [];
+  // },
   runAllMethods: function () {
-    // tracker.clearData ();
+    //  tracker.clearData ();
 
-    tracker.searchMatches = [];
     tracker.getQueryDataNmatch (event);
     // tracker.displaySearchResults ();
     tracker.addToLocalStorage ();
     initMap();
+    tracker.searchMatches = [];
 
   },
 };
@@ -91,14 +92,14 @@ var tracker = {
 /// this function PINS STATIONS ON THE MAP ////
 
 function geocodeSeveralAdresses(geocoder, resultsMap) {
-  // var tracker.searchMatches = JSON.parse(localStorage.getItem('foundAddresses'));
-alert ('addressesForCity is ' +  tracker.searchMatches);
-  for (var i = 0; i < tracker.searchMatches.length; i++) {
-    geocoder.geocode({'address': tracker.searchMatches[i]}, function(results, status) {
+ var addressesForCity = JSON.parse(localStorage.getItem('foundAddresses'));
+alert ('addressesForCity is ' +  addressesForCity);
+  for (var i = 0; i < addressesForCity.length; i++) {
+    geocoder.geocode({'address': addressesForCity[i]}, function(results, status) {
       if (status === 'OK') {
         console.log('label index is ' + labelIndex);
         var popUpWindow = new google.maps.InfoWindow({
-          content: tracker.searchMatches[labelIndex]
+          content: addressesForCity[labelIndex]
         })
         resultsMap.setCenter(results[0].geometry.location);
         var marker = new google.maps.Marker  ({
@@ -110,7 +111,8 @@ alert ('addressesForCity is ' +  tracker.searchMatches);
         marker.addListener('click', function () {
           popUpWindow.open(map, marker);
         });
-      } else {
+      }
+      else {
         alert('Geocode was not successful for the following reason: ' + status);
       }
     });
