@@ -1,12 +1,12 @@
 
 var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-var labelIndex = 0;
-var addressesForCity = [];
+// var labelIndex = 0;
+
 // Object literal
 var tracker = {
   getForm: document.getElementById('search'),
   searchWord: null,
-  searchMatches: [],
+
   matchFound: false,
   clearText: document.getElementById('displayArea'),
   matchedAddresses: [],
@@ -19,9 +19,7 @@ var tracker = {
     tracker.matchFound = false;
     for (var i = 0; i < locations.length; i++) {
       if (locations[i].city === this.searchWord) {
-        console.log ('line 19' + locations[i].chargeType + "," + locations[i].building + "," + locations[i].fullAddress);
-        tracker.searchMatches.push(locations[i].building + ', ' + locations[i].fullAddress);
-        console.log (tracker.searchMatches);
+        console.log (locations[i].chargeType + "," + locations[i].building + "," + locations[i].fullAddress);
         tracker.matchedOneAdrs = locations[i].fullAddress;
         tracker.matchedAddresses.push(locations[i].fullAddress);
       };
@@ -30,8 +28,8 @@ var tracker = {
 
   displaySearchResults: function () {
     var buildingAddress = '';
-    for (var i = 0; i < tracker.searchMatches.length; i++) {
-      buildingAddress = tracker.searchMatches[i];
+    for (var i = 0; i < tracker.WHATEV.length; i++) {
+      buildingAddress = tracker.WHATEV[i];
       console.log('iteration :' + [i] + buildingAddress);
       // var table = document.getElementById('displayArea');
       // var tableRow = document.createElement('tr');
@@ -49,7 +47,7 @@ var tracker = {
       // tD.appendChild(aTag4Charger);
       // tableRow.appendChild (tD);
       // table.appendChild(tableRow);
-      tracker.matchFound = true;
+      // tracker.matchFound = true;
     };
     if (tracker.matchFound === false) {
       console.log ('not found');
@@ -60,23 +58,22 @@ var tracker = {
     };
   },
   addToLocalStorage: function () {
-    //  localStorage.setItem('foundAddresses', JSON.stringify(tracker.matchedAddresses));
-     localStorage.setItem('foundAddresses', JSON.stringify(tracker.searchMatches));
+      localStorage.setItem('foundAddresses', JSON.stringify(tracker.matchedAddresses));
     alert ('addresses are ' + localStorage.foundAddresses);
   },
   // clearData: function() {
   //   var clearText = document.getElementById('displayArea');
   //   clearText.innerHTML = '';
-  //   tracker.searchMatches = [];
+  //   tracker.WHATEV = [];
   // },
   runAllMethods: function () {
     //  tracker.clearData ();
 
-    tracker.getQueryDataNmatch (event);
+     tracker.getQueryDataNmatch (event);
     // tracker.displaySearchResults ();
     tracker.addToLocalStorage ();
     initMap();
-    tracker.searchMatches = [];
+    tracker.matchedAddresses = [];
 
   },
 };
@@ -92,8 +89,9 @@ var tracker = {
 /// this function PINS STATIONS ON THE MAP ////
 
 function geocodeSeveralAdresses(geocoder, resultsMap) {
+  var labelIndex = 0;
  var addressesForCity = JSON.parse(localStorage.getItem('foundAddresses'));
-alert ('addressesForCity is ' +  addressesForCity);
+console.log ('addressesForCity is ' +  addressesForCity);
   for (var i = 0; i < addressesForCity.length; i++) {
     geocoder.geocode({'address': addressesForCity[i]}, function(results, status) {
       if (status === 'OK') {
@@ -105,12 +103,13 @@ alert ('addressesForCity is ' +  addressesForCity);
         var marker = new google.maps.Marker  ({
           label: labels[labelIndex++ % labels.length],
           map: resultsMap,
-          // title: tracker.searchMatches[i];
+          // title: tracker.WHATEV[i];
           position: results[0].geometry.location
         });
         marker.addListener('click', function () {
           popUpWindow.open(map, marker);
         });
+        tracker.matchFound = true;
       }
       else {
         alert('Geocode was not successful for the following reason: ' + status);
@@ -125,7 +124,7 @@ function initMap() {
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     center: {lat: 47.608013, lng: -122.335167}
   });
-   var geocoder = new google.maps.Geocoder();
+  var geocoder = new google.maps.Geocoder();
   geocodeSeveralAdresses(geocoder, map);
 
   // document.getElementById('submit').addEventListener('click', function() {
