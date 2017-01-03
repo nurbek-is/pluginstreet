@@ -5,7 +5,7 @@
     <title>PlugInstreet</title>
     <link rel="stylesheet" href="styles/style.css" media="screen" title="no title" charset="utf-8">
   </head>
-  <body background='images/chargingmap.jpg'>
+  <body>
 <nav id='nav'>
       <li><a href="index.html">HOME</a></li>
       <li><a href="type.html">CHARGING OPTIONS</a></li>
@@ -22,12 +22,7 @@
 <button class='formfield' id='submit' type="submit" name="button"><img src="images/icon_search.png" alt="search button" /></button>
 </form>
 
-<section class="displaySearchResults">
-
-<div id="displayArea">
-
-</div>
-</section>
+<div id="map"></div>
 
 <footer id='icons'>
   <a href="https://www.facebook.com/" target = "_blank"><img class='logos' src="images/facebook.png" alt="facebook logo"/></a>
@@ -39,8 +34,10 @@
 </footer>
   </body>
   <script type="text/javascript" src='app.js'>
-  <script src="myev.js"></script>
   </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCG3MfRfh0yju0fb4O7fnnkEjrHYXJgR5U&callback=initMap">
+  </script>
+  <!-- <script src="myev.js"></script> -->
   <SCRIPT SRC="stations.js">
   </SCRIPT>
   <script src='jquery-3.1.0.min.js'>
