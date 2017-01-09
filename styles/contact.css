@@ -1,0 +1,104 @@
+
+
+#nav {
+  display: flex;
+  justify-content:  space-around;
+  background-color: #676791;
+  text-decoration: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  list-style-type:none;
+}
+
+a:hover {
+  background-color: #42f4e5;
+}
+a {
+text-decoration: none;
+  }
+
+
+/* New Station Style */
+
+#addedStation {
+  max-width: 450px;
+  margin-left: 467px;
+  margin-bottom: 10px;
+}
+#chTypes {
+  margin-top: 13px;
+}
+.userInput {
+  height: 15px;
+  width: 150px;
+}
+
+#uploader {
+  -webkit-appearance:none;
+  appearance:none;
+  width: 50%;
+  margin-bottom: 10px;
+  margin-top: 8px;
+}
+#chooseImg4upld {
+  margin-left: 140px;
+}
+
+
+/* Log In Sign Up style  */
+
+#personinfo {
+  display: flex;
+  justify-content:space-around;
+}
+.btn {
+  background-color: #42b0f4 !important;
+  width: 140px;
+  margin: 5px
+}
+
+#SbmtButton {
+  margin-left: 240px  !important;
+  margin-top: 8px  !important;
+}
+
+label {
+    width:180px;
+    clear:left;
+    text-align:right;
+    padding-right:10px;
+}
+
+input, label {
+    float:left;
+    margin-top: 13px;
+}
+
+.form-legend {
+  background-color: cornflowerblue;
+  color: antiquewhite;
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  font-size: 0.8em;
+  margin-right: 4px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 10%;
+}
+#signlogbtn {
+  display: flex;
+  flex-direction: row;
+  align-content:space-around;
+}
+/*FOOTER*/
+#icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.logos {
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+}
