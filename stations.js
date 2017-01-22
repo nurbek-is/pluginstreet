@@ -1,11 +1,12 @@
 var locations = [];
 // constructor function
-function station (city, chargeType, building, fullAddress, dateAdded) {
+function station (city, chargeType, building, fullAddress, dateAdded, path) {
   this.city = city;
   this.chargeType = chargeType;
   this.building = building;
   this.fullAddress = fullAddress;
   this.dateAdded = dateAdded;
+  this.path = path;
   locations.push(this);
 }
 // Instantiating new objects
@@ -18,3 +19,4 @@ var BellevueMall = new station ('bellevue', 'Level 2 Charger', 'Lincoln Square',
 var concTechBell = new station ('bellevue', 'DC Fast Charger', 'Concur Technologies', '601 108th Ave NE, Bellevue, WA 98004', '04/12/2016');
 var southParkPor = new station ('portland', 'Level 2 Charger', 'South Park Seafood', '914 SW Taylor St. Portland, OR 97204', '06/12/2016');
 var hotelJupiPor = new station ('portland', 'Tesla Supercharger', 'Hotel Jupiter','800 East Burnside, Portland, OR 97214', '02/12/2016');
+var googleKirkland = new station('kirkland', 'Level 2 Charger', 'Google Kirland', '747 6th St S, Kirkland, WA 98033', '01/20/2016');

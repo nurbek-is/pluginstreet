@@ -49,7 +49,8 @@ function geocodeSeveralAdresses(geocoder, resultsMap) {
         console.log('label index is ' + labelIndex);
         console.log ("Label..."+tracker.matchedAddessLabels [labelIndex].toString());
         var popUpWindow = new google.maps.InfoWindow({
-        content: tracker.matchedAddessLabels [labelIndex]
+        content: '<IMG BORDER="0" ALIGN="Left" SRC="stationImages/googleKirkland.jpg"> ' +
+        tracker.matchedAddessLabels [labelIndex]
 
         })
         resultsMap.setCenter(results[0].geometry.location);
