@@ -4,7 +4,6 @@
 var tracker = {
   getForm: document.getElementById('search'),
   searchWord: null,
-  matchFound: false,
   matchedAddresses: [],
   matchedAddessLabels: [],
 
@@ -17,7 +16,6 @@ var tracker = {
     this.searchWord = event.target.searchName.value;
     this.searchWord = this.searchWord.toLowerCase();
     console.log (this.searchWord);
-    tracker.matchFound = false;
     for (var i = 0; i < locations.length; i++) {
       if (locations[i].city === this.searchWord) {
         addressString = locations[i].chargeType + ", " + locations[i].building + ", " + locations[i].fullAddress;
@@ -63,7 +61,6 @@ function geocodeSeveralAdresses(geocoder, resultsMap) {
         marker.addListener('click', function () {
           popUpWindow.open(map, marker);
         });
-        tracker.matchFound = true;
       }
       else {
         alert('Geocode was not successful for the following reason: ' + status);
