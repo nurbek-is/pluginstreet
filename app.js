@@ -18,7 +18,7 @@ var tracker = {
     console.log (this.searchWord);
     for (var i = 0; i < locations.length; i++) {
       if (locations[i].city === this.searchWord) {
-        addressString = locations[i].chargeType + ", " + locations[i].building + ", " + locations[i].fullAddress;
+        addressString = locations[i].chargeType + ", " + locations[i].building + ", " + "<br>" + locations[i].fullAddress + "; " + ' Date Added: ' + locations[i].dateAdded;
         tracker.matchedAddessLabels.push(addressString);
         tracker.matchedAddresses.push(locations[i].fullAddress);
       };
@@ -53,6 +53,7 @@ function geocodeSeveralAdresses(geocoder, resultsMap) {
 
         })
         resultsMap.setCenter(results[0].geometry.location);
+        // this Functins when clicked puts content= chargeType,buildingAddress etc
         var marker = new google.maps.Marker  ({
           label: labels[labelIndex++ % labels.length],
           map: resultsMap,
@@ -66,7 +67,7 @@ function geocodeSeveralAdresses(geocoder, resultsMap) {
         alert('Geocode was not successful for the following reason: ' + status);
       }
     });
-  }
+ }
 }
 
 function initMap() {
