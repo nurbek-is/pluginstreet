@@ -73,7 +73,7 @@ function geocodeSeveralAdresses(geocoder, resultsMap) {
 }
 
 function initMap() {
-  alert("Initing map...");
+  // alert("Initing map...");
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 15,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
