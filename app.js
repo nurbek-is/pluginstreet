@@ -1,16 +1,17 @@
 
-
 // Object literal
 var tracker = {
   getForm: document.getElementById('search'),
   searchWord: null,
   matchedAddresses: [],
   matchedAddessLabels: [],
+  buildingNameArray: [],
 
 
   getQueryDataNmatch: function (event) {
     tracker.matchedAddresses = [];
     tracker.matchedAddessLabels = [];
+    tracker.buildingNameArray = [];
     initMap();
     event.preventDefault();
     this.searchWord = event.target.searchName.value;
@@ -18,6 +19,12 @@ var tracker = {
     console.log (this.searchWord);
     for (var i = 0; i < locations.length; i++) {
       if (locations[i].city === this.searchWord) {
+        var buildingNameNoSpace = locations[i].building.replace(/\s+/g, '');
+        alert ('buildingString is ' + buildingNameNoSpace);
+        buildingName  = 'stationImages/' + buildingNameNoSpace + '.jpg';
+        alert ('buildingName is ' + buildingName);
+        tracker.buildingNameArray.push(buildingName);
+        console.log (tracker.buildingNameArray)
         addressString = locations[i].chargeType + ", " + locations[i].building + ", " + "<br>" + locations[i].fullAddress + "; " + ' Date Added: ' + locations[i].dateAdded;
         tracker.matchedAddessLabels.push(addressString);
         tracker.matchedAddresses.push(locations[i].fullAddress);
@@ -25,7 +32,6 @@ var tracker = {
     };
     initMap();
   },
-
 
   runAllMethods: function () {
 
@@ -43,14 +49,15 @@ function geocodeSeveralAdresses(geocoder, resultsMap) {
   var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   var labelIndex = 0;
 
+
  for (var i = 0; i < tracker.matchedAddresses.length; i++) {
     geocoder.geocode({'address': tracker.matchedAddresses[i]}, function(results, status) {
       if (status === 'OK') {
         console.log('label index is ' + labelIndex);
         console.log ("Label..."+tracker.matchedAddessLabels [labelIndex].toString());
         var popUpWindow = new google.maps.InfoWindow({
-        content: '<IMG BORDER="0" ALIGN="Left" SRC="stationImages/googleKirkland.jpg"> ' +
-        tracker.matchedAddessLabels [labelIndex]
+        content:"'" + '<IMG BORDER="0" ALIGN="Left" SRC=' + tracker.buildingNameArray [labelIndex] +
+        '>' + "'" + " " + tracker.matchedAddessLabels [labelIndex]
 
         })
         resultsMap.setCenter(results[0].geometry.location);
