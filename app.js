@@ -12,20 +12,20 @@ var tracker = {
     tracker.matchedAddresses = [];
     tracker.matchedAddessLabels = [];
     tracker.buildingNameArray = [];
-    initMap();
     event.preventDefault();
     this.searchWord = event.target.searchName.value;
     this.searchWord = this.searchWord.toLowerCase();
     console.log (this.searchWord);
     for (var i = 0; i < locations.length; i++) {
       if (locations[i].city === this.searchWord) {
-        var buildingNameNoSpace = locations[i].building.replace(/\s+/g, '');
-        alert ('buildingString is ' + buildingNameNoSpace);
+        var buildingNameNoSpace = locations[i].building.replace(/-|[/]|\s+/g, '');
+        // alert ('buildingString is ' + buildingNameNoSpace);
         buildingName  = 'stationImages/' + buildingNameNoSpace + '.jpg';
-        alert ('buildingName is ' + buildingName);
+        // alert ('buildingName is ' + buildingName);
         tracker.buildingNameArray.push(buildingName);
         console.log (tracker.buildingNameArray)
-        addressString = locations[i].chargeType + ", " + locations[i].building + ", " + "<br>" + locations[i].fullAddress + "; " + ' Date Added: ' + locations[i].dateAdded;
+        addressString = locations[i].chargeType + ", " + locations[i].building + ", " + "<br>" +
+        locations[i].fullAddress + "; " + ' Date Added: ' + locations[i].dateAdded;
         tracker.matchedAddessLabels.push(addressString);
         tracker.matchedAddresses.push(locations[i].fullAddress);
       };
@@ -49,19 +49,38 @@ function geocodeSeveralAdresses(geocoder, resultsMap) {
   var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   var labelIndex = 0;
 
-
  for (var i = 0; i < tracker.matchedAddresses.length; i++) {
     geocoder.geocode({'address': tracker.matchedAddresses[i]}, function(results, status) {
+      // var bounds = new google.maps.LatLngBounds();
       if (status === 'OK') {
         console.log('label index is ' + labelIndex);
-        console.log ("Label..."+tracker.matchedAddessLabels [labelIndex].toString());
+        console.log ("Label..."+ tracker.matchedAddessLabels [labelIndex].toString());
         var popUpWindow = new google.maps.InfoWindow({
         content:"'" + '<IMG BORDER="0" ALIGN="Left" SRC=' + tracker.buildingNameArray [labelIndex] +
         '>' + "'" + " " + tracker.matchedAddessLabels [labelIndex]
 
         })
+        console.log (results[0].geometry.location);
         resultsMap.setCenter(results[0].geometry.location);
-        // this Functins when clicked puts content= chargeType,buildingAddress etc
+        // var latitude = results[0].geometry.location.lat();
+        // console.log (latitude)
+        // var longitude = results[0].geometry.location.lng();
+        // console.log (longitude)
+
+        // var topRight = resultsMap.getProjection().fromLatLngToPoint(resultsMap.getBounds().getNorthEast());
+        // console.log (topRight);
+        // var bottomLeft = resultsMap.getProjection().fromLatLngToPoint(resultsMap.getBounds().getSouthWest());
+        // console.log (bottomLeft);
+        // var scale = Math.pow(2, resultsMap.getZoom());
+        // console.log (scale);
+        //  var worldPoint = resultsMap.getProjection().fromLatLngToPoint(results[0].geometry.location);
+        //  console.log(worldPoint);
+        //  var pixelOffset = new google.maps.Point((worldPoint.x - bottomLeft.x) * scale,
+        //  (worldPoint.y - topRight.y) * scale);
+        //  console.log(pixelOffset);
+
+
+                // this Function when clicked puts content= chargeType,buildingAddress etc
         var marker = new google.maps.Marker  ({
           label: labels[labelIndex++ % labels.length],
           map: resultsMap,
@@ -81,14 +100,10 @@ function geocodeSeveralAdresses(geocoder, resultsMap) {
 function initMap() {
   // alert("Initing map...");
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 15,
+    zoom: 14,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     center: {lat: 47.608013, lng: -122.335167}
   });
   var geocoder = new google.maps.Geocoder();
   geocodeSeveralAdresses(geocoder, map);
-
-  // document.getElementById('submit').addEventListener('click', function() {
-  //   geocodeSearchButton(geocoder, map);
-  // });
 }
