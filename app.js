@@ -62,22 +62,7 @@ function geocodeSeveralAdresses(geocoder, resultsMap) {
         })
         console.log (results[0].geometry.location);
         resultsMap.setCenter(results[0].geometry.location);
-        // var latitude = results[0].geometry.location.lat();
-        // console.log (latitude)
-        // var longitude = results[0].geometry.location.lng();
-        // console.log (longitude)
 
-        // var topRight = resultsMap.getProjection().fromLatLngToPoint(resultsMap.getBounds().getNorthEast());
-        // console.log (topRight);
-        // var bottomLeft = resultsMap.getProjection().fromLatLngToPoint(resultsMap.getBounds().getSouthWest());
-        // console.log (bottomLeft);
-        // var scale = Math.pow(2, resultsMap.getZoom());
-        // console.log (scale);
-        //  var worldPoint = resultsMap.getProjection().fromLatLngToPoint(results[0].geometry.location);
-        //  console.log(worldPoint);
-        //  var pixelOffset = new google.maps.Point((worldPoint.x - bottomLeft.x) * scale,
-        //  (worldPoint.y - topRight.y) * scale);
-        //  console.log(pixelOffset);
 
 
                 // this Function when clicked puts content= chargeType,buildingAddress etc
