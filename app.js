@@ -55,7 +55,7 @@ var tracker = {
           console.log ("Label..."+ tracker.matchedAddessLabels [labelIndex].toString());
           var popUpWindow = new google.maps.InfoWindow({
           content:"'" + '<IMG BORDER="0" ALIGN="Left" SRC=' + tracker.buildingNameArray [labelIndex] +
-          '>' + "'" + " " + tracker.matchedAddessLabels [labelIndex]
+          '>' + "'" + " " + tracker.matchedAddessLabels [labelIndex] + "  <a href='https:www.google.com/maps/dir/' target='_blank'>Navigation</a>"
 
           })
           console.log (results[0].geometry.location);
@@ -104,7 +104,7 @@ function initMap() {
 
         // var directionsService = new google.maps.DirectionsService();
         // alert(directionsService);
-        //  var directionsDisplay = new google.maps.DirectionsRenderer();
+        // var directionsDisplay = new google.maps.DirectionsRenderer();
         //
         //  var map = new google.maps.Map(document.getElementById('mapdirection'), {
         //    zoom:7,
