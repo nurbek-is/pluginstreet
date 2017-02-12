@@ -56,7 +56,7 @@ var tracker = {
           addressOnly = tracker.matchedAddessLabels [labelIndex].split('<br>').pop().split(';').shift()
           var popUpWindow = new google.maps.InfoWindow({
           content:"'" + '<IMG BORDER="0" ALIGN="Left" SRC=' + tracker.buildingNameArray [labelIndex] +
-          '>' + "'" + " " + tracker.matchedAddessLabels [labelIndex] + '<br>' + "<a href='http://maps.google.com/maps?saddr=" + addressOnly +
+          '>' + "'" + " " + tracker.matchedAddessLabels [labelIndex] + '<br>' + "<a href='http://maps.google.com/maps?saddr=" + " "+ "&daddr=" + addressOnly +
           " + 'target='+'_blank'>Navigation</a>"
 
           })
