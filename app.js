@@ -36,7 +36,9 @@ var tracker = {
         addressString = locations[i].chargeType + ", " + locations[i].building + ", " + "<br>" +
         locations[i].fullAddress + "; " + ' Date Added: ' + locations[i].dateAdded;
         tracker.matchedAddessLabels.push(addressString);
+        console.log ('tracker.matchedAddessLabels is ' + tracker.matchedAddessLabels)
         tracker.matchedAddresses.push(locations[i].fullAddress);
+        console.log ('tracker.matchedAddresses is ' + tracker.matchedAddresses)
       };
     };
     initMap();
@@ -49,21 +51,19 @@ var tracker = {
 
    for (var i = 0; i < tracker.matchedAddresses.length; i++) {
       geocoder.geocode({'address': tracker.matchedAddresses[i]}, function(results, status) {
-        // var bounds = new google.maps.LatLngBounds();
+
         if (status === 'OK') {
-          console.log('label index is ' + labelIndex);
-          console.log ("Label..."+ tracker.matchedAddessLabels [labelIndex].toString());
+          addressOnly = tracker.matchedAddessLabels [labelIndex].split('<br>').pop().split(';').shift()
           var popUpWindow = new google.maps.InfoWindow({
           content:"'" + '<IMG BORDER="0" ALIGN="Left" SRC=' + tracker.buildingNameArray [labelIndex] +
-          '>' + "'" + " " + tracker.matchedAddessLabels [labelIndex] + "  <a href='https:www.google.com/maps/dir/' target='_blank'>Navigation</a>"
+          '>' + "'" + " " + tracker.matchedAddessLabels [labelIndex] + '<br>' + "<a href='http://maps.google.com/maps?saddr=" + addressOnly +
+          " + 'target='+'_blank'>Navigation</a>"
 
           })
           console.log (results[0].geometry.location);
           resultsMap.setCenter(results[0].geometry.location);
 
-
-
-                  // this Function when clicked puts content= chargeType,buildingAddress etc
+          // this Function when clicked puts content= chargeType,buildingAddress etc
           var marker = new google.maps.Marker  ({
             label: labels[labelIndex++ % labels.length],
             map: resultsMap,
@@ -78,7 +78,7 @@ var tracker = {
         }
       });
    }
- },
+  },
 
   runAllMethods: function () {
 
@@ -101,27 +101,3 @@ function initMap() {
   var geocoder = new google.maps.Geocoder();
   tracker.geocodeSeveralAdresses(geocoder, map);
 }
-
-        // var directionsService = new google.maps.DirectionsService();
-        // alert(directionsService);
-        // var directionsDisplay = new google.maps.DirectionsRenderer();
-        //
-        //  var map = new google.maps.Map(document.getElementById('mapdirection'), {
-        //    zoom:7,
-        //    mapTypeId: google.maps.MapTypeId.ROADMAP
-        //  });
-        //
-        //  directionsDisplay.setMap(map);
-        //  directionsDisplay.setPanel(document.getElementById('panel'));
-        //
-        //  var request = {
-        //    origin: 'Chicago',
-        //    destination: 'New York',
-        //    travelMode: google.maps.DirectionsTravelMode.DRIVING
-        //  };
-        //
-        //  directionsService.route(request, function(response, status) {
-        //    if (status == google.maps.DirectionsStatus.OK) {
-        //      directionsDisplay.setDirections(response);
-        //    }
-        //  });
