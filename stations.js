@@ -1,12 +1,11 @@
 var locations = [];
 // constructor function
-function station (city, chargeType, building, fullAddress, dateAdded, path) {
+function station (city, chargeType, building, fullAddress, dateAdded) {
   this.city = city;
   this.chargeType = chargeType;
   this.building = building;
   this.fullAddress = fullAddress;
   this.dateAdded = dateAdded;
-  this.path = path;
   locations.push(this);
 }
 

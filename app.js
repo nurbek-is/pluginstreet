@@ -7,6 +7,15 @@ var tracker = {
   matchedAddessLabels: [],
   buildingNameArray: [],
 
+  IPlocation: function () {
+//     $.get("http://ipinfo.io", function(response) {
+//   console.log(response.ip, response.country);
+// }, "jsonp")
+    $.getJSON('http://ipinfo.io', function(data){
+      console.log(data)
+    })
+  },
+
 
   getQueryDataNmatch: function (event) {
     tracker.matchedAddresses = [];
@@ -27,60 +36,60 @@ var tracker = {
         addressString = locations[i].chargeType + ", " + locations[i].building + ", " + "<br>" +
         locations[i].fullAddress + "; " + ' Date Added: ' + locations[i].dateAdded;
         tracker.matchedAddessLabels.push(addressString);
+        console.log ('tracker.matchedAddessLabels is ' + tracker.matchedAddessLabels)
         tracker.matchedAddresses.push(locations[i].fullAddress);
+        console.log ('tracker.matchedAddresses is ' + tracker.matchedAddresses)
       };
     };
     initMap();
+  },
+
+  /// this function PINS STATIONS ON THE MAP ////
+  geocodeSeveralAdresses: function (geocoder, resultsMap) {
+    var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var labelIndex = 0;
+
+   for (var i = 0; i < tracker.matchedAddresses.length; i++) {
+      geocoder.geocode({'address': tracker.matchedAddresses[i]}, function(results, status) {
+
+        if (status === 'OK') {
+          addressOnly = tracker.matchedAddessLabels [labelIndex].split('<br>').pop().split(';').shift()
+          var popUpWindow = new google.maps.InfoWindow({
+          content:"'" + '<IMG BORDER="0" ALIGN="Left" SRC=' + tracker.buildingNameArray [labelIndex] +
+          '>' + "'" + " " + tracker.matchedAddessLabels [labelIndex] + '<br>' + "<a href='http://maps.google.com/maps?saddr=" + " "+ "&daddr=" + addressOnly +
+          " + 'target='+'_blank'>Navigation</a>"
+
+          })
+          console.log (results[0].geometry.location);
+          resultsMap.setCenter(results[0].geometry.location);
+
+          // this Function when clicked puts content= chargeType,buildingAddress etc
+          var marker = new google.maps.Marker  ({
+            label: labels[labelIndex++ % labels.length],
+            map: resultsMap,
+            position: results[0].geometry.location
+          });
+          marker.addListener('click', function () {
+            popUpWindow.open(map, marker);
+          });
+        }
+        else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      });
+   }
   },
 
   runAllMethods: function () {
 
     tracker.getQueryDataNmatch (event);
     tracker.matchedAddresses = [];
+    tracker.IPlocation ();
   },
 };
 
  tracker.getForm.addEventListener('submit',tracker.runAllMethods);
 
-
-/// this function PINS STATIONS ON THE MAP ////
-
-function geocodeSeveralAdresses(geocoder, resultsMap) {
-  var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  var labelIndex = 0;
-
- for (var i = 0; i < tracker.matchedAddresses.length; i++) {
-    geocoder.geocode({'address': tracker.matchedAddresses[i]}, function(results, status) {
-      // var bounds = new google.maps.LatLngBounds();
-      if (status === 'OK') {
-        console.log('label index is ' + labelIndex);
-        console.log ("Label..."+ tracker.matchedAddessLabels [labelIndex].toString());
-        var popUpWindow = new google.maps.InfoWindow({
-        content:"'" + '<IMG BORDER="0" ALIGN="Left" SRC=' + tracker.buildingNameArray [labelIndex] +
-        '>' + "'" + " " + tracker.matchedAddessLabels [labelIndex]
-
-        })
-        console.log (results[0].geometry.location);
-        resultsMap.setCenter(results[0].geometry.location);
-
-
-
-                // this Function when clicked puts content= chargeType,buildingAddress etc
-        var marker = new google.maps.Marker  ({
-          label: labels[labelIndex++ % labels.length],
-          map: resultsMap,
-          position: results[0].geometry.location
-        });
-        marker.addListener('click', function () {
-          popUpWindow.open(map, marker);
-        });
-      }
-      else {
-        alert('Geocode was not successful for the following reason: ' + status);
-      }
-    });
- }
-}
 
 function initMap() {
   // alert("Initing map...");
@@ -90,5 +99,5 @@ function initMap() {
     center: {lat: 47.608013, lng: -122.335167}
   });
   var geocoder = new google.maps.Geocoder();
-  geocodeSeveralAdresses(geocoder, map);
+  tracker.geocodeSeveralAdresses(geocoder, map);
 }
