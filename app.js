@@ -6,6 +6,7 @@ var tracker = {
   matchedAddresses: [],
   matchedAddessLabels: [],
   buildingNameArray: [],
+  foundMatch: false,
 
   IPlocation: function () {
 //     $.get("http://ipinfo.io", function(response) {
@@ -16,7 +17,6 @@ var tracker = {
     })
   },
 
-
   getQueryDataNmatch: function (event) {
     tracker.matchedAddresses = [];
     tracker.matchedAddessLabels = [];
@@ -25,8 +25,10 @@ var tracker = {
     this.searchWord = event.target.searchName.value;
     this.searchWord = this.searchWord.toLowerCase();
     console.log (this.searchWord);
+    tracker.foundMatch = false;
     for (var i = 0; i < locations.length; i++) {
       if (locations[i].city === this.searchWord) {
+        tracker.foundMatch = true;
         var buildingNameNoSpace = locations[i].building.replace(/-|[/]|\s+/g, '');
         // alert ('buildingString is ' + buildingNameNoSpace);
         buildingName  = 'stationImages/' + buildingNameNoSpace + '.jpg';
@@ -39,8 +41,11 @@ var tracker = {
         console.log ('tracker.matchedAddessLabels is ' + tracker.matchedAddessLabels)
         tracker.matchedAddresses.push(locations[i].fullAddress);
         console.log ('tracker.matchedAddresses is ' + tracker.matchedAddresses)
-      };
-    };
+        }
+      }
+      if (tracker.foundMatch === false) {
+        alert('SORRY,That city is NOT in our system yet');
+      }
     initMap();
   },
 
@@ -72,6 +77,7 @@ var tracker = {
           marker.addListener('click', function () {
             popUpWindow.open(map, marker);
           });
+
         }
         else {
           alert('Geocode was not successful for the following reason: ' + status);
@@ -89,7 +95,6 @@ var tracker = {
 };
 
  tracker.getForm.addEventListener('submit',tracker.runAllMethods);
-
 
 function initMap() {
   // alert("Initing map...");

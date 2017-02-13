@@ -23,7 +23,7 @@ html, body {
       #nav {
         display: flex;
         justify-content:  space-around;
-        background-color: #676791;
+        background-color: #b3b3ff;
         text-decoration: none;
         padding-top: 15px;
         padding-bottom: 15px;
